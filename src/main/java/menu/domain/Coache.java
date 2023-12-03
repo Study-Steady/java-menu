@@ -1,29 +1,34 @@
-package menu.view.validation;
+package menu.domain;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import menu.util.StringConvertor;
+import menu.view.validation.RegexPattern;
 
-public class CoacheInputValidator {
+public class Coache {
+    private static final int MIN_COMMON_LENGTH = 2;
+    private static final int MAX_NAME_LENGTH = 4;
+    private static final int MAX_COACHE_COUNT = 5;
+    private String name;
 
-    private CoacheInputValidator() {
+    private Coache(String name) {
+        this.name = name;
     }
 
-    public static void validate(String input) {
+    public static Coache from(String input) {
         String[] coaches = StringConvertor.splitByComma(input);
         validateCoacheName(coaches);
         validateCoacheNameType(coaches);
         validateCoachesCount(coaches);
         validateDuplicate(coaches);
-        validateSeparator(input);
+        return new Coache(input);
     }
-
 
     private static void validateCoacheName(String[] coaches) {
         Arrays.stream(coaches)
                 .forEach(coache -> {
-                    if(coache.length() < 2 || coache.length() > 4) {
+                    if(coache.length() < MIN_COMMON_LENGTH || coache.length() > MAX_NAME_LENGTH) {
                         throw new IllegalArgumentException("코치 이름은 2글자 이상 4글자 이하이어야 합니다");
                     }
                 });
@@ -41,7 +46,7 @@ public class CoacheInputValidator {
     public static void validateCoachesCount(String[] coaches) {
         Arrays.stream(coaches)
                 .forEach(coache -> {
-                    if (coaches.length < 2 || coaches.length > 5) {
+                    if (coache.length() < MIN_COMMON_LENGTH || coache.length() > MAX_COACHE_COUNT) {
                         throw new IllegalArgumentException("코치의 수는 최소 2명 최대 5명이어야 합니다.");
                     }
                 });
@@ -58,9 +63,7 @@ public class CoacheInputValidator {
         return new HashSet<>(Arrays.asList(strings));
     }
 
-    private static void validateSeparator(String input) {
-        if (!input.contains(StringConvertor.COMMA)) {
-            throw new IllegalArgumentException("코치들은 쉼표(,)로 구분하여 입력해야 합니다.");
-        }
+    public String getName() {
+        return name;
     }
 }
