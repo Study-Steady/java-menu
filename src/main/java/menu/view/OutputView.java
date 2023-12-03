@@ -1,5 +1,6 @@
 package menu.view;
 
+import menu.domain.Players;
 import menu.view.printer.Printer;
 
 public class OutputView {
@@ -15,10 +16,6 @@ public class OutputView {
         printer.printEmptyLine();
     }
 
-    public void printTemplate() {
-//        int template = OutputFomatter.toTemplate(rawTemplate);
-//        printer.printLine("%d개", template);
-    }
 
     public void printExceptionMessage(String message) {
         printer.printLine(ERROR_MESSAGE_FORMAT + message);

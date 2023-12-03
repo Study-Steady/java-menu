@@ -12,7 +12,18 @@ public class Player {
     }
 
     public static Player from(PlayerName playerName, AvoidedMenus avoidedMenus) {
-        return new Player(playerName, avoidedMenus, new WeeklyMenus());
-//        return new Player(playerName, avoidedMenus, WeeklyMenus.init());
+        return new Player(playerName, avoidedMenus, WeeklyMenus.init());
+    }
+
+    public boolean isAvoidedMenu(Menu menu) {
+        return avoidedMenus.contains(menu);
+    }
+
+    public void applyRecommandMenus(Day day, Menu menu) {
+        weeklyMenus.add(day, menu);
+    }
+
+    public boolean recommanedMenu(Menu menu) {
+        return weeklyMenus.contains(menu);
     }
 }

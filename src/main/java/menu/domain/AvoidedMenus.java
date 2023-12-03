@@ -23,4 +23,9 @@ public class AvoidedMenus {
     private boolean isValidCount(List<String> avoidedMenus) {
         return avoidedMenus.size() >= 0 && avoidedMenus.size() <= 2;
     }
+
+    public boolean contains(Menu menu) {
+        return avoidedMenus.stream()
+                .anyMatch(menu::isSameMenu);
+    }
 }
