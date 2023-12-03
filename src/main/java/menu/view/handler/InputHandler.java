@@ -20,11 +20,12 @@ public class InputHandler {
         this.errorView = errorView;
     }
 
-    public Coaches createValidatedCoaches() {
-        return receiveValidatedInput(() -> {
-            String inputCoaches = inputView.inputCoaches();
-            return CoachesFactory.createCoachesBy(inputCoaches);
-        });
+    public String receiveValidatedCoachNames() {
+        return receiveValidatedInput(inputView::inputCoaches);
+    }
+
+    public String receiveValidatedInedibleMenus() {
+        return receiveValidatedInput(inputView::inputInedibleMenus);
     }
 
     private <T> T receiveValidatedInput(Supplier<T> inputView) {

@@ -9,8 +9,14 @@ public class InputView {
     public String inputCoaches() {
         String input = Console.readLine();
         String trimedInput = StringConvertor.convertTrimedString(input);
-        InputValidator.validateSeparator(trimedInput);
+        InputValidator.validateNameSeparator(trimedInput);
         return trimedInput;
+    }
+
+    public String inputInedibleMenus() {
+        String input = Console.readLine();
+        InputValidator.validateMenuSeparator(input);
+        return input;
     }
 }
 
