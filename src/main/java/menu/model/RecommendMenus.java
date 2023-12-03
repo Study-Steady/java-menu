@@ -17,4 +17,8 @@ public class RecommendMenus {
     public void addMenu(Menu menu) {
         menus.add(menu);
     }
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
 }

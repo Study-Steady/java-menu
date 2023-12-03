@@ -41,4 +41,8 @@ public class Coach {
     public CoachName getName() {
         return name;
     }
+
+    public RecommendMenus getRecommendMenus() {
+        return recommendMenus;
+    }
 }

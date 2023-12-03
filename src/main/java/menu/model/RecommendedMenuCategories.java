@@ -18,4 +18,8 @@ public class RecommendedMenuCategories {
             menuCategory.recommendMenusTo(coaches, picker);
         }
     }
+
+    public List<MenuCategory> getMenuCategories() {
+        return menuCategories;
+    }
 }

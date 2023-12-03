@@ -33,7 +33,7 @@ public class MenuRecommendController {
         handleHateMenusOfCoaches(coaches);
         RecommendedMenuCategories menuCategories = MenuCategory.recommendCategory(numberGenerator);
         menuCategories.recommendMenus(coaches, picker);
-
+        outputView.printResult(coaches, menuCategories);
     }
 
     private void handleHateMenusOfCoaches(Coaches coaches) {

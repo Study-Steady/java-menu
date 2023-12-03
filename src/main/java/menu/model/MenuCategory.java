@@ -81,4 +81,7 @@ public enum MenuCategory {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
     }
 
+    public String getName() {
+        return name;
+    }
 }
