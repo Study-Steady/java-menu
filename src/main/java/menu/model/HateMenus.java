@@ -19,6 +19,7 @@ public class HateMenus {
 
     public static HateMenus from(List<String> rawHateMenus) {
         List<Menu> hateMenus = rawHateMenus.stream()
+                .filter(rawHateMenu -> !rawHateMenu.isBlank())
                 .map(Menu::from)
                 .toList();
 
@@ -29,9 +30,8 @@ public class HateMenus {
         return new HateMenus(new ArrayList<>());
     }
 
-    public boolean isNotHateMenu(Menu recommendedMenu) {
-        return menus.stream()
-                .noneMatch(menu -> menu.equals(recommendedMenu));
+    public boolean notInclude(Menu menu) {
+        return !this.menus.contains(menu);
     }
 
     public void addMenus(HateMenus hateMenus) {

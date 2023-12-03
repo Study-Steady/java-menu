@@ -28,8 +28,8 @@ public class Coach {
 
     public void recommendMenu(List<String> menuNames, Picker picker) {
         Stream.generate(() -> getRecommendedMenu(menuNames, picker))
-                .filter(hateMenus::isNotHateMenu)
-                .filter(recommendMenus::isNotRecommendedMenuBefore)
+                .filter(recommendMenu -> recommendMenu.notIn(hateMenus))
+                .filter(recommendMenu -> recommendMenu.notIn(recommendMenus))
                 .findFirst()
                 .ifPresent(recommendMenus::addMenu);
     }

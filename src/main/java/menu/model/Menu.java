@@ -56,10 +56,7 @@ public enum Menu {
     BAGUETTE("바게트"),
     SPAGHETTI("스파게티"),
     PIZZA("피자"),
-    PANINI("파니니"),
-
-    // 기본값
-    NONE("없음");
+    PANINI("파니니");
 
     private final String name;
 
@@ -68,18 +65,18 @@ public enum Menu {
     }
 
     public static Menu from(String menuName) {
-        if (menuName.isBlank()) {
-            return NONE;
-        }
-
         return Stream.of(values())
                 .filter(menu -> menu.name.equals(menuName))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
     }
 
-    public boolean isValidMenu() {
-        return this != NONE;
+    public boolean notIn(HateMenus hateMenus) {
+        return hateMenus.notInclude(this);
+    }
+
+    public boolean notIn(RecommendMenus recommendMenus) {
+        return recommendMenus.notInclude(this);
     }
 
     public String getName() {

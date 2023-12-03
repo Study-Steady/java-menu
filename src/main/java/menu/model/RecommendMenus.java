@@ -18,9 +18,8 @@ public class RecommendMenus {
         menus.add(menu);
     }
 
-    public boolean isNotRecommendedMenuBefore(Menu menu) {
-        return menus.stream()
-                .noneMatch(recommededMenu -> recommededMenu.equals(menu));
+    public boolean notInclude(Menu menu) {
+        return !this.menus.contains(menu);
     }
 
     public List<Menu> getMenus() {
