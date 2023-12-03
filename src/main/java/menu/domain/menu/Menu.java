@@ -1,6 +1,8 @@
 package menu.domain.menu;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Menu {
 
@@ -8,6 +10,12 @@ public class Menu {
 
     public Menu(String name) {
         this.name = name;
+    }
+
+    public static List<Menu> namesOf(List<String> menuNames) {
+        return menuNames.stream()
+                .map(Menu::new)
+                .collect(Collectors.toList());
     }
 
     public boolean matchesName(String name) {
