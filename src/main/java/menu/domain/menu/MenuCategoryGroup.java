@@ -32,7 +32,7 @@ public class MenuCategoryGroup {
         while (menuCategoryGroup.size() < MAXIMUM_MENU_CATEGORY_GROUP_SIZE) {
             MenuCategory category = getRandomMenuCategory();
             if (Collections.frequency(menuCategoryGroup, category) < 2) {
-                menuCategoryGroup.add(MenuCategory.KOREAN);
+                menuCategoryGroup.add(category);
             }
         }
         return menuCategoryGroup;
