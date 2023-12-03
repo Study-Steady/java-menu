@@ -3,7 +3,6 @@ package menu.domain.recommend;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import menu.domain.menu.Menu;
 import menu.domain.menu.MenuCategory;
 import menu.domain.coach.Coach;
@@ -32,28 +31,20 @@ public class MenuRecommender {
         this.coaches = coaches;
     }
 
-    public List<MenuRecommendResult> recommend() {
-        return this.coaches.getCoaches()
-                .stream()
-                .map(this::recommend)
-                .collect(Collectors.toList());
-    }
-
-    private MenuRecommendResult recommend(Coach coach) {
-        List<Menu> recommendMenu = new ArrayList<>();
+    public MenuRecommendResult recommend() {
         List<MenuCategory> pickedMenuCategories = new ArrayList<>();
 
         for (DayOfWeek lunchDay : lunchDays) {
-            // 카테고리 추천
             MenuCategory pickedCategory = pickCategory(pickedMenuCategories);
             pickedMenuCategories.add(pickedCategory);
 
-            // 메뉴 추천
-            Menu pickedMenu = this.menuPicker.pick(coach, pickedCategory, recommendMenu);
-            recommendMenu.add(pickedMenu);
+            for (Coach coach : coaches.getCoaches()) {
+                Menu pickedMenu = this.menuPicker.pick(coach, pickedCategory, coach.getRecommended());
+                coach.recommendedMenu(pickedMenu);
+            }
         }
 
-        return new MenuRecommendResult(coach, recommendMenu);
+        return new MenuRecommendResult(pickedMenuCategories, this.coaches);
     }
 
     private MenuCategory pickCategory(List<MenuCategory> pickedMenuCategories) {

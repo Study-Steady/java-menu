@@ -1,17 +1,25 @@
 package menu.domain.recommend;
 
 import java.util.List;
-import menu.domain.menu.Menu;
-import menu.domain.coach.Coach;
+import menu.domain.coach.Coaches;
+import menu.domain.menu.MenuCategory;
 
 public class MenuRecommendResult {
 
-    private final Coach coach;
-    private final List<Menu> recommendedMenu;
+    private final List<MenuCategory> menuCategories;
+    private final Coaches coaches;
 
-    public MenuRecommendResult(Coach coach, List<Menu> recommendedMenu) {
-        this.coach = coach;
-        this.recommendedMenu = recommendedMenu;
+    public MenuRecommendResult(List<MenuCategory> menuCategories, Coaches coaches) {
+        this.menuCategories = menuCategories;
+        this.coaches = coaches;
+    }
+
+    public List<MenuCategory> getMenuCategories() {
+        return menuCategories;
+    }
+
+    public Coaches getCoaches() {
+        return coaches;
     }
 
 }
