@@ -13,6 +13,14 @@ public class Menu {
         return new Menu(menu);
     }
 
+    public boolean isSameMenu(String avoidedMenu) {
+        return avoidedMenu.equals(menu);
+    }
+
+    public String getMenu() {
+        return menu;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -28,9 +36,5 @@ public class Menu {
     @Override
     public int hashCode() {
         return Objects.hash(menu);
-    }
-
-    public boolean isSameMenu(String avoidedMenu) {
-        return avoidedMenu == menu;
     }
 }

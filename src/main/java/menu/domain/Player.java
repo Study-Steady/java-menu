@@ -26,4 +26,12 @@ public class Player {
     public boolean recommanedMenu(Menu menu) {
         return weeklyMenus.contains(menu);
     }
+
+    public PlayerName getPlayerName() {
+        return playerName;
+    }
+
+    public WeeklyMenus getWeeklyMenus() {
+        return weeklyMenus;
+    }
 }

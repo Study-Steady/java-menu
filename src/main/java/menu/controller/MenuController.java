@@ -26,9 +26,8 @@ public class MenuController {
 
     public void run() {
         outputView.printStart();
-        List<String> rawPlayerNames = readWithRetry(inputView::inputPlayerNames);
-        PlayerNames playerNames = readWithRetry(PlayerNames::from, rawPlayerNames);
-        Players players = readWithRetry(inputView::inputAvoidedMenu, playerNames);
+        PlayerNames playerNames = readWithRetry(this::getPlayersName);
+        Players players = readWithRetry(inputView::inputAvoidedMenu, playerNames); // 여기 수정 필요 한명 잘못받으면 처음부터됨
 
         NumberGenerator numberGenerator = new RandomNumberGenerator();
         Categories categories = new CategoriesPicker(numberGenerator).pick();
@@ -38,6 +37,12 @@ public class MenuController {
 
         weeklyCategories.recommandMenus(players);
 
+        outputView.printResult(categories, players);
+    }
+
+    private PlayerNames getPlayersName() {
+        List<String> rawPlayerNames = readWithRetry(inputView::inputPlayerNames);
+        return PlayerNames.from(rawPlayerNames);
     }
 
     private <T> T readWithRetry(Supplier<T> supplier) {

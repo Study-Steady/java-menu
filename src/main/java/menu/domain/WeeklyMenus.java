@@ -22,4 +22,8 @@ public class WeeklyMenus {
         return weekylMenus.values().stream()
                  .anyMatch(menu -> menu.equals(inputMenu));
     }
+
+    public Map<Day, Menu> getWeekylMenus() {
+        return weekylMenus;
+    }
 }

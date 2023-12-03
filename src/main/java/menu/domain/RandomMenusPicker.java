@@ -7,9 +7,10 @@ public class RandomMenusPicker implements MenusPicker {
     @Override
     public Menu pick(List<String> menus, Player player) {
         Menu menu = Menu.from("");
-        while (!player.isAvoidedMenu(menu) && !player.recommanedMenu(menu)) {
+        do {
             menu = Menu.from(Randoms.shuffle(menus).get(0));
-        }
+        } while (player.isAvoidedMenu(menu) || player.recommanedMenu(menu));
+
         return menu;
     }
 }

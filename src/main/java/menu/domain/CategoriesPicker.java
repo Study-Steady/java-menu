@@ -13,18 +13,19 @@ public class CategoriesPicker {
 
     public Categories pick() {
         List<Category> categories = new ArrayList<>();
-        while (categories.size() <= 5) {
-            Category category = Category.DEFAULT;
-            while (isValidDuplicates(categories)) {
-                int categoryIndex = numberGenerator.generate();
-                category = Category.fromIndex(categoryIndex);
+        while (categories.size() < 5) {
+            int categoryIndex = numberGenerator.generate();
+            Category category = Category.fromIndex(categoryIndex);
+            if (isValidDuplicates(categories, category)){
+                categories.add(category);
             }
-            categories.add(category);
         }
         return Categories.from(categories);
     }
 
-    private boolean isValidDuplicates(List<Category> categories) {
-        return categories.size() - Set.copyOf(categories).size() > 1 ;
+    private boolean isValidDuplicates(List<Category> categories, Category category) {
+        List<Category> targetCategories = new ArrayList<>(categories);
+        targetCategories.add(category);
+        return targetCategories.size() - Set.copyOf(targetCategories).size() <= 1;
     }
 }
