@@ -12,8 +12,8 @@ public enum MenuCategory {
     WESTERN("양식", 5),
     ;
 
-    private String name;
-    private int num;
+    private final String name;
+    private final int num;
 
     MenuCategory(String name, int num) {
         this.name = name;

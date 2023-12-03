@@ -24,8 +24,8 @@ public enum Menu {
             "바게트", WESTERN), 스파게티("스파게티", WESTERN), 피자("피자", WESTERN), 파니니("파니니", WESTERN),
     ;
 
-    private String name;
-    private MenuCategory menuCategory;
+    private final String name;
+    private final MenuCategory menuCategory;
 
     Menu(String name, MenuCategory menuCategory) {
         this.name = name;
