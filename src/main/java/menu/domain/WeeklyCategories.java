@@ -8,7 +8,7 @@ public class WeeklyCategories {
     private final Map<Day, Category> weeklyCategories;
     private final MenusPicker menusPicker;
 
-    public WeeklyCategories(Map<Day, Category> weeklyCategories, MenusPicker menusPicker) {
+    private WeeklyCategories(Map<Day, Category> weeklyCategories, MenusPicker menusPicker) {
         this.weeklyCategories = weeklyCategories;
         this.menusPicker = menusPicker;
     }
@@ -30,9 +30,5 @@ public class WeeklyCategories {
 
     public void recommandMenus(Players players) {
         weeklyCategories.forEach((day, category) -> category.recommandMenus(day, players, menusPicker));
-    }
-
-    public Map<Day, Category> getWeeklyCategories() {
-        return weeklyCategories;
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public class Categories {
     private final List<Category> categories;
 
-    public Categories(List<Category> categories) {
+    private Categories(List<Category> categories) {
         this.categories = categories;
     }
 

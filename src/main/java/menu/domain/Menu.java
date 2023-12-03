@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Menu {
     private final String menu;
 
-    public Menu(String menu) {
+    private Menu(String menu) {
         this.menu = menu;
     }
 

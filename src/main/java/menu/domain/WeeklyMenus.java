@@ -6,7 +6,7 @@ import java.util.Map;
 public class WeeklyMenus {
     private final Map<Day, Menu> weekylMenus;
 
-    public WeeklyMenus(Map<Day, Menu> weekylMenus) {
+    private WeeklyMenus(Map<Day, Menu> weekylMenus) {
         this.weekylMenus = weekylMenus;
     }
 

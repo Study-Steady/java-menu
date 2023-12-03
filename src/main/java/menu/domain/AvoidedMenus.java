@@ -3,9 +3,11 @@ package menu.domain;
 import java.util.List;
 
 public class AvoidedMenus {
+    public static final int MAX_AVOIDEDE_MENUS_COUNT = 2;
+    public static final int MIN_AVOIDEDE_MENUS_COUNT = 0;
     private final List<String> avoidedMenus;
 
-    public AvoidedMenus(List<String> avoidedMenus) {
+    private AvoidedMenus(List<String> avoidedMenus) {
         validateCount(avoidedMenus);
         this.avoidedMenus = avoidedMenus;
     }
@@ -21,7 +23,7 @@ public class AvoidedMenus {
     }
 
     private boolean isValidCount(List<String> avoidedMenus) {
-        return avoidedMenus.size() >= 0 && avoidedMenus.size() <= 2;
+        return avoidedMenus.size() >= MIN_AVOIDEDE_MENUS_COUNT && avoidedMenus.size() <= MAX_AVOIDEDE_MENUS_COUNT;
     }
 
     public boolean contains(Menu menu) {

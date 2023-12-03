@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerNames {
+    public static final int MIN_PLAYER_COUNT = 2;
+    public static final int MAX_PLAYER_COUNT = 5;
     private final List<PlayerName> playerNames;
 
-    public PlayerNames(List<PlayerName> playerNames) {
+    private PlayerNames(List<PlayerName> playerNames) {
         validateCount(playerNames);
         this.playerNames = playerNames;
     }
@@ -28,7 +30,7 @@ public class PlayerNames {
     }
 
     private boolean isValidCount(List<PlayerName> playerNames) {
-        return playerNames.size() >= 2 && playerNames.size() <= 5;
+        return playerNames.size() >= MIN_PLAYER_COUNT && playerNames.size() <= MAX_PLAYER_COUNT;
     }
 
     public List<PlayerName> getPlayerNames() {

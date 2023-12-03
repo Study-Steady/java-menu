@@ -5,7 +5,7 @@ public class Player {
     private final AvoidedMenus avoidedMenus;
     private final WeeklyMenus weeklyMenus;
 
-    public Player(PlayerName playerName, AvoidedMenus avoidedMenus, WeeklyMenus weeklyMenus) {
+    private Player(PlayerName playerName, AvoidedMenus avoidedMenus, WeeklyMenus weeklyMenus) {
         this.playerName = playerName;
         this.avoidedMenus = avoidedMenus;
         this.weeklyMenus = weeklyMenus;

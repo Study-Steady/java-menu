@@ -1,9 +1,11 @@
 package menu.domain;
 
 public class PlayerName {
+    public static final int MIN_NAME_LENGTH = 2;
+    public static final int MAX_NAME_LENGTH = 4;
     private final String playerName;
 
-    public PlayerName(String playerName) {
+    private PlayerName(String playerName) {
         validateLength(playerName);
         this.playerName = playerName;
     }
@@ -19,7 +21,7 @@ public class PlayerName {
     }
 
     private boolean isValidLength(String playerName) {
-        return playerName.length() >= 2 && playerName.length() <= 4;
+        return playerName.length() >= MIN_NAME_LENGTH && playerName.length() <= MAX_NAME_LENGTH;
     }
 
     public String getPlayerName() {
