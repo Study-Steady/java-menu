@@ -1,6 +1,6 @@
 package menu.view.output;
 
-import java.util.List;
+import menu.domain.coach.Coach;
 import menu.domain.recommend.MenuRecommendResult;
 import menu.view.print.Printer;
 
@@ -22,15 +22,16 @@ public class OutputView {
         printer.printLine(ErrorMessageFormatter.addErrorPrefix(message));
     }
 
-    public void showMenuRecommendResult(List<MenuRecommendResult> recommend) {
+    public void showMenuRecommendResult(MenuRecommendResult menuRecommendResult) {
         printer.printWithEmptyLineAhead("메뉴 추천 결과입니다.");
         printer.printLine("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]");
+        printer.printLine(OutputFormatter.toCategoryFormat(menuRecommendResult.getMenuCategories()));
 
-        for (MenuRecommendResult menuRecommendResult : recommend) {
-            printer.printLine(OutputFormatter.toMenuRecommendFormat(menuRecommendResult));
+        for (Coach coach : menuRecommendResult.getCoaches().getCoaches()) {
+            printer.printLine(OutputFormatter.toMenuRecommendFormat(coach));
         }
 
-        printer.printLine("추천을 완료했습니다.");
+        printer.printWithEmptyLineAhead("추천을 완료했습니다.");
     }
 
 }
