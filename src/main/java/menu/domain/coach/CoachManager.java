@@ -33,8 +33,6 @@ public class CoachManager {
         try {
             consumer.accept(getRandomMenu(category));
         } catch (IllegalArgumentException e) {
-            // todo : 예외처리 메세지 출력
-            System.out.println("예외 발생");
             process(consumer, category);
         }
     }
