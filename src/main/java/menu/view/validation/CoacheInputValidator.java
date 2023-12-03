@@ -5,13 +5,22 @@ import java.util.HashSet;
 import java.util.Set;
 import menu.util.StringConvertor;
 
-public class InputValidator {
+public class CoacheInputValidator {
 
-    private InputValidator() {
+    private CoacheInputValidator() {
     }
 
-    public static void validateCoacheName(String input) {
+    public static void validate(String input) {
         String[] coaches = StringConvertor.splitByComma(input);
+        validateCoacheName(coaches);
+        validateCoacheNameType(coaches);
+        validateCoachesCount(coaches);
+        validateDuplicate(coaches);
+        validateSeparator(input);
+    }
+
+
+    private static void validateCoacheName(String[] coaches) {
         Arrays.stream(coaches)
                 .forEach(coache -> {
                     if(coache.length() < 2 || coache.length() > 4) {
@@ -20,8 +29,7 @@ public class InputValidator {
                 });
     }
 
-    public static void validateCoacheNameType(String input) {
-        String[] coaches = StringConvertor.splitByComma(input);
+    private static void validateCoacheNameType(String[] coaches) {
         Arrays.stream(coaches)
                 .forEach(coache -> {
                     if (!RegexPattern.KOREAN_OR_ENGLISH.matches(coache)) {
@@ -30,8 +38,7 @@ public class InputValidator {
                 });
     }
 
-    public static void validateCoachesCount(String input) {
-        String[] coaches = StringConvertor.splitByComma(input);
+    public static void validateCoachesCount(String[] coaches) {
         Arrays.stream(coaches)
                 .forEach(coache -> {
                     if (coaches.length < 2 || coaches.length > 5) {
@@ -40,8 +47,7 @@ public class InputValidator {
                 });
     }
 
-    public static void validateDuplicate(String input) {
-        String[] coaches = StringConvertor.splitByComma(input);
+    private static void validateDuplicate(String[] coaches) {
         Set<String> duplicationNames = getDuplicationStrings(coaches);
         if (coaches.length != duplicationNames.size()) {
             throw new IllegalArgumentException("중복된 이름을 입력할 수 없습니다.");
@@ -52,7 +58,7 @@ public class InputValidator {
         return new HashSet<>(Arrays.asList(strings));
     }
 
-    public static void validateSeparator(String input) {
+    private static void validateSeparator(String input) {
         if (!input.contains(StringConvertor.COMMA)) {
             throw new IllegalArgumentException("코치들은 쉼표(,)로 구분하여 입력해야 합니다.");
         }
