@@ -18,8 +18,8 @@ public class Coach {
         this.menuBlackList = menuBlackList;
     }
 
-    public static Coach of(CoachName name, Set<String> rawBlackList) {
-        return new Coach(name, MenuHistory.create(), MenuBlackList.from(rawBlackList));
+    public static Coach of(CoachName name, MenuBlackList menuBlackList) {
+        return new Coach(name, MenuHistory.create(), menuBlackList);
     }
 
     public void addMenu(Menu menu) {
