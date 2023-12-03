@@ -8,6 +8,8 @@ import static menu.domain.menu.MenuCategory.WESTERN;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum Menu {
     규동("규동", JAPANESE), 우동("우동", JAPANESE), 미소시루("미소시루", JAPANESE), 스시("스시", JAPANESE), 가츠동("가츠동", JAPANESE), 오니기리(
@@ -42,8 +44,8 @@ public enum Menu {
         return MENUS_BY_MENU_CATEGORY.get(menuCategory);
     }
 
-    public static Map<MenuCategory, List<Menu>> getmenusByMenuCategory1() {
-        return MENUS_BY_MENU_CATEGORY;
+    public static Menu fromName(String name) {
+        return BY_NAME.get(name);
     }
 
     // todo 최적화
@@ -54,4 +56,13 @@ public enum Menu {
             ASIAN, List.of(팟타이, 카오_팟, 나시고렝, 파인애플_볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜),
             WESTERN, List.of(라자냐, 그라탱, 뇨끼, 끼슈, 프렌치_토스트, 바게트, 스파게티, 피자, 파니니)
     );
+
+    private static Map<String, Menu> BY_NAME =
+            Stream.of(values())
+                    .collect(
+                            Collectors.toMap(
+                                    Menu::getName,
+                                    menu -> menu
+                            )
+                    );
 }
