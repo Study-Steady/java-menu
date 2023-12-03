@@ -1,5 +1,7 @@
 package menu.view.output;
 
+import java.util.List;
+import menu.domain.recommend.MenuRecommendResult;
 import menu.view.print.Printer;
 
 public class OutputView {
@@ -18,6 +20,17 @@ public class OutputView {
 
     public void showErrorMessage(String message) {
         printer.printLine(ErrorMessageFormatter.addErrorPrefix(message));
+    }
+
+    public void showMenuRecommendResult(List<MenuRecommendResult> recommend) {
+        printer.printWithEmptyLineAhead("메뉴 추천 결과입니다.");
+        printer.printLine("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]");
+
+        for (MenuRecommendResult menuRecommendResult : recommend) {
+            printer.printLine(OutputFormatter.toMenuRecommendFormat(menuRecommendResult));
+        }
+
+        printer.printLine("추천을 완료했습니다.");
     }
 
 }
