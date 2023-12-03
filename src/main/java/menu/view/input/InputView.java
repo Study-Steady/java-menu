@@ -35,8 +35,6 @@ public class InputView {
         printer.printWithEmptyLineAhead(coachName + InputGuideMessage.RESTRICTED_MENU_INPUT.getMessage());
         String rawInput = reader.readLine();
 
-        StringValidator.validateHasText(rawInput);
-
         return StringConvertor.splitByComma(rawInput);
     }
 
