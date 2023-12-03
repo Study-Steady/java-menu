@@ -27,7 +27,7 @@ public class InedibleMenuValidator {
     }
 
     private static void validateMenuName(String input) {
-        if (!Menu.containsMenu(input)) {
+        if (!input.isEmpty() && !Menu.containsMenu(input)) {
             throw new IllegalArgumentException("메뉴판에 없는 메뉴 입니다.");
         }
     }

@@ -13,8 +13,8 @@ public class Coaches {
         return coaches.size();
     }
 
-    public String getCoachNameBy(int index) {
-        return coaches.get(index).getName();
+    public Coach getCoachBy(int index) {
+        return coaches.get(index);
     }
 
     @Override

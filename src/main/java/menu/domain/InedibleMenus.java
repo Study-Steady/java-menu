@@ -15,6 +15,9 @@ public class InedibleMenus {
         return new InedibleMenus(Arrays.asList(StringConvertor.splitByComma(menuNames)));
     }
 
+    public boolean isInedibleMenu(String name) {
+        return menus.contains(name);
+    }
 
     @Override
     public String toString() {

@@ -13,6 +13,10 @@ public class Coach {
         return name;
     }
 
+    public boolean isInedibleMenu(String name) {
+        return inedibleMenus.isInedibleMenu(name);
+    }
+
     @Override
     public String toString() {
         return "Coach{" +
