@@ -7,7 +7,7 @@ public class SystemRandomMenuCategoryPicker implements RandomMenuCategoryPicker 
 
     @Override
     public MenuCategory pick(int minMenuNoInclusive, int maxMenuNoInclusive) {
-        return MenuCategory.getByMenuNo(Randoms.pickNumberInRange(maxMenuNoInclusive, maxMenuNoInclusive));
+        return MenuCategory.getByMenuNo(Randoms.pickNumberInRange(minMenuNoInclusive, maxMenuNoInclusive));
     }
 
 }
