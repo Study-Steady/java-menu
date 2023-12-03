@@ -3,7 +3,7 @@ package menu.utils;
 import static menu.utils.DefaultSymbol.CATEGORY;
 import static menu.utils.DefaultSymbol.DEFINE;
 import static menu.utils.DefaultSymbol.NEW_LINE;
-import static menu.utils.DefaultSymbol.RESULT_DELIMETER;
+import static menu.utils.DefaultSymbol.RESULT_DELIMITER;
 import static menu.utils.DefaultSymbol.RESULT_END;
 import static menu.utils.DefaultSymbol.RESULT_START;
 
@@ -32,7 +32,7 @@ public class OutputFormatter {
         sb.append(RESULT_START.getSymbol());
         sb.append(DEFINE.getSymbol());
         for (int i = 0; i < 5; i++) {
-            sb.append(RESULT_DELIMETER.getSymbol());
+            sb.append(RESULT_DELIMITER.getSymbol());
             sb.append(DayOfWeek.fromNum(i + 1).getDayOfWeek());
         }
         sb.append(RESULT_END.getSymbol());
@@ -43,7 +43,7 @@ public class OutputFormatter {
         sb.append(RESULT_START.getSymbol());
         sb.append(CATEGORY.getSymbol());
         for(MenuCategory category: menuCategoryGroup.getMenuCategoryGroup()) {
-            sb.append(RESULT_DELIMETER.getSymbol());
+            sb.append(RESULT_DELIMITER.getSymbol());
             sb.append(category.getName());
         }
         sb.append(RESULT_END.getSymbol());
@@ -54,7 +54,7 @@ public class OutputFormatter {
         sb.append(RESULT_START.getSymbol());
         sb.append(coach.getName().getName());
         for (Menu menu: coach.getMenuHistory().getHistory()) {
-            sb.append(RESULT_DELIMETER.getSymbol());
+            sb.append(RESULT_DELIMITER.getSymbol());
             sb.append(menu.getName());
         }
         sb.append(RESULT_END.getSymbol());

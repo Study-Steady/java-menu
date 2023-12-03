@@ -2,11 +2,11 @@ package menu.utils;
 
 public enum DefaultSymbol {
 
-    DELIMETER(","),
+    DELIMITER(","),
     BLANK(" "),
     RESULT_START("[ "),
     RESULT_END(" ]"),
-    RESULT_DELIMETER(" | "),
+    RESULT_DELIMITER(" | "),
     CATEGORY("카테고리"),
     DEFINE("구분"),
     NEW_LINE(System.lineSeparator()),
