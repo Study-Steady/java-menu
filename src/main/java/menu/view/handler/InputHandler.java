@@ -1,13 +1,6 @@
 package menu.view.handler;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import menu.domain.Coach;
-import menu.domain.Coaches;
-import menu.domain.CoachesFactory;
-import menu.util.StringConvertor;
 import menu.view.ErrorView;
 import menu.view.InputView;
 
