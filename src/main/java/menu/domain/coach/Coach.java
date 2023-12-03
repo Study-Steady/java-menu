@@ -1,10 +1,7 @@
 package menu.domain.coach;
 
-import static menu.utils.MenuUtils.getRandomMenu;
-
-import java.util.function.Consumer;
+import java.util.Set;
 import menu.domain.menu.Menu;
-import menu.domain.menu.MenuCategory;
 
 public class Coach {
     private static final int MAX_COACH_NAME_LENGTH = 4;
@@ -12,19 +9,24 @@ public class Coach {
 
     private final String name;
     private final MenuHistory menuHistory;
+    private final MenuBlackList menuBlackList;
 
-    private Coach (String name, MenuHistory menuHistory) {
+    private Coach (String name, MenuHistory menuHistory, MenuBlackList menuBlackList) {
         this.name = name;
         this.menuHistory = menuHistory;
+        this.menuBlackList = menuBlackList;
     }
 
-    public static Coach of(String name) {
+    public static Coach of(String name, Set<String> rawBlackList) {
         validateName(name);
-        return new Coach(name, MenuHistory.create());
+        return new Coach(name, MenuHistory.create(), MenuBlackList.from(rawBlackList));
     }
 
-    public void addMenuFromCategory(MenuCategory category) {
-        process(menuHistory::addMenu, category);
+    public void addMenu(Menu menu) {
+        if (menuBlackList.contains(menu)) {
+            throw new IllegalArgumentException();
+        }
+        menuHistory.addMenu(menu);
     }
 
     public String getName() {
@@ -33,15 +35,6 @@ public class Coach {
 
     public MenuHistory getMenuHistory() {
         return menuHistory;
-    }
-
-    private void process(Consumer<Menu> consumer, MenuCategory category) {
-        try {
-            consumer.accept(getRandomMenu(category));
-        } catch (IllegalArgumentException e) {
-            // todo : 예외처리 메세지 출력
-            process(consumer, category);
-        }
     }
 
     private static void validateName(String name) {
