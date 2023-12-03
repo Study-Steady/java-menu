@@ -1,5 +1,7 @@
 package menu.domain.coach;
 
+import static menu.exception.ExceptionMessage.INVALID_COACH_NAME_LENGTH;
+
 public class CoachName {
     private final String name;
 
@@ -19,7 +21,7 @@ public class CoachName {
     private static void validateCoachName(String coachName) {
         if (coachName.length() < CoachConstant.MIN_COACH_NAME_LENGTH.getNum()
             || coachName.length() > CoachConstant.MAX_COACH_NAME_LENGTH.getNum()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_COACH_NAME_LENGTH.getMessage());
         }
     }
 }

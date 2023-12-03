@@ -1,5 +1,7 @@
 package menu.domain.menu;
 
+import static menu.exception.ExceptionMessage.INVALID_MENU_BLACK_LIST_SIZE;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -26,7 +28,7 @@ public class MenuBlackList {
 
     private static void validateBlackListSize(Set<String> rawBlackList) {
         if (rawBlackList.size() > MAX_BLACK_LIST_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_MENU_BLACK_LIST_SIZE.getMessage());
         }
     }
 }
