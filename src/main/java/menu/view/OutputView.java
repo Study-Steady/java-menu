@@ -1,6 +1,5 @@
 package menu.view;
 
-import menu.view.formatter.OutputFomatter;
 import menu.view.printer.Printer;
 
 public class OutputView {
@@ -9,6 +8,11 @@ public class OutputView {
 
     public OutputView(Printer printer) {
         this.printer = printer;
+    }
+
+    public void printStart() {
+        printer.printLine("점심 메뉴 추천을 시작합니다.");
+        printer.printEmptyLine();
     }
 
     public void printTemplate() {

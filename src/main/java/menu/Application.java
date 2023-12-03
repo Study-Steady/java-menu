@@ -18,6 +18,6 @@ public class Application {
         OutputView outputView = new OutputView(printer);
 
         MenuController menuController = new MenuController(inputView, outputView);
-//        menuController.run();
+        menuController.run();
     }
 }
