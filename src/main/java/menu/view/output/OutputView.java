@@ -1,6 +1,7 @@
 package menu.view.output;
 
 import static menu.view.output.OutputMessage.FINISH;
+import static menu.view.output.OutputMessage.RECOMMEND_MENU;
 import static menu.view.output.OutputMessage.WELCOME;
 
 public class OutputView {
@@ -15,6 +16,7 @@ public class OutputView {
     }
 
     public void printResult(String formattedResult) {
+        printer.printMessage(RECOMMEND_MENU.getMessage());
         printer.printMessage(formattedResult);
     }
 
