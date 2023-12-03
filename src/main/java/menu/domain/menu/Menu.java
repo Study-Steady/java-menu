@@ -44,8 +44,16 @@ public enum Menu {
         return MENUS_BY_MENU_CATEGORY.get(menuCategory);
     }
 
+    public static List<String> getStringMenusByMenuCategory(MenuCategory menuCategory) {
+        return STRING_MENUS_BY_MENU_CATEGORY.get(menuCategory);
+    }
+
     public static Menu fromName(String name) {
-        return BY_NAME.get(name);
+        try {
+            return BY_NAME.get(name);
+        } catch (NullPointerException e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     // todo 최적화
@@ -56,6 +64,17 @@ public enum Menu {
             ASIAN, List.of(팟타이, 카오_팟, 나시고렝, 파인애플_볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜),
             WESTERN, List.of(라자냐, 그라탱, 뇨끼, 끼슈, 프렌치_토스트, 바게트, 스파게티, 피자, 파니니)
     );
+
+    private static Map<MenuCategory, List<String>> STRING_MENUS_BY_MENU_CATEGORY =
+            MENUS_BY_MENU_CATEGORY.entrySet().stream()
+                    .collect(
+                            Collectors.toMap(
+                                    Map.Entry::getKey,
+                                    entry -> entry.getValue().stream()
+                                            .map(Menu::getName)
+                                            .collect(Collectors.toList())
+                            )
+                    );
 
     private static Map<String, Menu> BY_NAME =
             Stream.of(values())

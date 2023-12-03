@@ -1,5 +1,7 @@
 package menu.utils;
 
+import static menu.domain.menu.Menu.getStringMenusByMenuCategory;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import menu.domain.menu.Menu;
 import menu.domain.menu.MenuCategory;
@@ -13,6 +15,6 @@ public class MenuUtils {
     }
 
     public static Menu getRandomMenu(MenuCategory menuCategory) {
-        return Randoms.shuffle(Menu.getMenusByMenuCategory(menuCategory)).get(0);
+        return Menu.fromName(Randoms.shuffle(getStringMenusByMenuCategory(menuCategory)).get(0));
     }
 }
