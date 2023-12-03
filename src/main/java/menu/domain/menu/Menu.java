@@ -6,6 +6,11 @@ import static menu.domain.menu.MenuCategory.JAPANESE;
 import static menu.domain.menu.MenuCategory.KOREAN;
 import static menu.domain.menu.MenuCategory.WESTERN;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum Menu {
     규동("규동", JAPANESE), 우동("우동", JAPANESE), 미소시루("미소시루", JAPANESE), 스시("스시", JAPANESE), 가츠동("가츠동", JAPANESE), 오니기리(
             "오니기리", JAPANESE), 하이라이스("하이라이스", JAPANESE), 라멘("라멘", JAPANESE), 오코노미야끼("오코노미야끼", JAPANESE),
@@ -26,4 +31,31 @@ public enum Menu {
         this.name = name;
         this.menuCategory = menuCategory;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public MenuCategory getMenuCategory() {
+        return menuCategory;
+    }
+
+    public static List<Menu> getMenusByMenuCategory(MenuCategory menuCategory) {
+        return menuListByMenuCategory.get(menuCategory);
+    }
+
+    private static Map<MenuCategory, List<Menu>> menuListByMenuCategory =
+            Stream.of(values())
+                    .collect(
+                            Collectors.groupingBy(
+                                    Menu::getMenuCategory
+                            )
+                    );
+//    private static Map<MenuCategory, List<Menu>> menusByMenuCategory = Map.of(
+//            JAPANESE, List.of(규동, 우동, 미소시루, 스시, 가츠동, 오니기리, 하이라이스, 라멘, 오코노미야끼),
+//            KOREAN, List.of(김밥, 김치찌개, 쌈밥, 된장찌개, 비빔밥, 칼국수, 불고기, 떡볶이, 제육볶음),
+//            CHINESE, List.of(깐풍기, 볶음면, 동파육, 짜장면, 짬뽕, 마파두부, 탕수육, 토마토_달걀볶음, 고추잡채),
+//            ASIAN, List.of(팟타이, 카오_팟, 나시고렝, 파인애플_볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜),
+//            WESTERN, List.of(라자냐, 그라탱, 뇨끼, 끼슈, 프렌치_토스트, 바게트, 스파게티, 피자, 파니니)
+//    );
 }
