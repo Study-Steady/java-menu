@@ -22,8 +22,8 @@ public class WeeklyCategories {
         Day[] days = Day.values();
         List<Category> categories = rawCategories.getCategories();
 
-        for (int i = 0; i < 5; i++) {
-            weeklyCatergories.put(days[i], categories.get(i));
+        for (int index = 0; index < days.length; index++) {
+            weeklyCatergories.put(days[index], categories.get(index));
         }
         return weeklyCatergories;
     }

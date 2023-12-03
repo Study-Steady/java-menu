@@ -46,7 +46,6 @@ public class InputView {
     private Player inputPlayerAvoidedMenu(PlayerName playerName) {
         printer.printLine(String.format("%s(이)가 못 먹는 메뉴를 입력해 주세요.", playerName.getPlayerName()));
         String avoidedMenu = reader.readLine();
-        printer.printEmptyLine();
         InputValidator.validateAvoidedMenu(avoidedMenu, "못 먹는 메뉴");
         return Player.from(playerName, AvoidedMenus.from(Converter.splitToList(COACHES_SEPARATOR, avoidedMenu)));
     }

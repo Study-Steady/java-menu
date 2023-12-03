@@ -27,22 +27,28 @@ public class MenuController {
     public void run() {
         outputView.printStart();
         PlayerNames playerNames = readWithRetry(this::getPlayersName);
-        Players players = readWithRetry(inputView::inputAvoidedMenu, playerNames); // 여기 수정 필요 한명 잘못받으면 처음부터됨
+        Players players = readWithRetry(inputView::inputAvoidedMenu, playerNames);
 
-        NumberGenerator numberGenerator = new RandomNumberGenerator();
-        Categories categories = new CategoriesPicker(numberGenerator).pick();
-
-        MenusPicker menusPicker = new RandomMenusPicker();
-        WeeklyCategories weeklyCategories = WeeklyCategories.of(categories, menusPicker);
+        Categories categories = pickCategories();
+        WeeklyCategories weeklyCategories = createWeeklyCategories(categories);
 
         weeklyCategories.recommandMenus(players);
-
         outputView.printResult(categories, players);
     }
 
     private PlayerNames getPlayersName() {
         List<String> rawPlayerNames = readWithRetry(inputView::inputPlayerNames);
         return PlayerNames.from(rawPlayerNames);
+    }
+
+    private Categories pickCategories() {
+        NumberGenerator numberGenerator = new RandomNumberGenerator();
+        return new CategoriesPicker(numberGenerator).pick();
+    }
+
+    private WeeklyCategories createWeeklyCategories(Categories categories) {
+        MenusPicker menusPicker = new RandomMenusPicker();
+        return WeeklyCategories.of(categories, menusPicker);
     }
 
     private <T> T readWithRetry(Supplier<T> supplier) {

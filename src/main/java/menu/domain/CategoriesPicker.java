@@ -14,13 +14,17 @@ public class CategoriesPicker {
     public Categories pick() {
         List<Category> categories = new ArrayList<>();
         while (categories.size() < 5) {
-            int categoryIndex = numberGenerator.generate();
-            Category category = Category.fromIndex(categoryIndex);
+            Category category = pickCategory();
             if (isValidDuplicates(categories, category)){
                 categories.add(category);
             }
         }
         return Categories.from(categories);
+    }
+
+    private Category pickCategory() {
+        int categoryIndex = numberGenerator.generate();
+        return Category.fromIndex(categoryIndex);
     }
 
     private boolean isValidDuplicates(List<Category> categories, Category category) {
