@@ -24,6 +24,12 @@ public class Coaches {
         return new Coaches(coaches);
     }
 
+    public void recommendMenus(List<String> menuNames, Picker picker) {
+        for (Coach coach : coaches) {
+            coach.recommendMenu(menuNames, picker);
+        }
+    }
+
     public List<Coach> getCoaches() {
         return coaches;
     }

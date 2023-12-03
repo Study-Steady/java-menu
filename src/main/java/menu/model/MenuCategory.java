@@ -34,14 +34,25 @@ public enum MenuCategory {
         this.menus = menus;
     }
 
-    public static List<MenuCategory> recommendCategory(NumberGenerator numberGenerator) {
+    public static RecommendedMenuCategories recommendCategory(NumberGenerator numberGenerator) {
         List<MenuCategory> recommendedMenuCategory = getMenuCategories(numberGenerator);
 
         if (isOverRecommended(recommendedMenuCategory)) {
             return recommendCategory(numberGenerator);
         }
 
-        return recommendedMenuCategory;
+        return RecommendedMenuCategories.from(recommendedMenuCategory);
+    }
+
+    public void recommendMenusTo(Coaches coaches, Picker picker) {
+        List<String> menuNames = getMenuNamesOf(menus);
+        coaches.recommendMenus(menuNames, picker);
+    }
+
+    private List<String> getMenuNamesOf(List<Menu> menus) {
+        return menus.stream()
+                .map(Menu::getName)
+                .toList();
     }
 
     private static List<MenuCategory> getMenuCategories(NumberGenerator numberGenerator) {

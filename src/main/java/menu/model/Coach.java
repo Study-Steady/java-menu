@@ -1,6 +1,7 @@
 package menu.model;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Coach {
     private final CoachName name;
@@ -23,6 +24,18 @@ public class Coach {
 
     public void addHateMenus(List<Menu> hateMenus) {
         this.hateMenus.addMenus(hateMenus);
+    }
+
+    public void recommendMenu(List<String> menuNames, Picker picker) {
+        Stream.generate(() -> getRecommendedMenu(menuNames, picker))
+                .filter(hateMenus::isNotHateMenu)
+                .findFirst()
+                .ifPresent(recommendMenus::addMenu);
+    }
+
+    private static Menu getRecommendedMenu(List<String> menuNames, Picker picker) {
+        String menuName = picker.pickOne(menuNames);
+        return Menu.from(menuName);
     }
 
     public CoachName getName() {

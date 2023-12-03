@@ -13,4 +13,8 @@ public class RecommendMenus {
     public static RecommendMenus defaultOf() {
         return new RecommendMenus(new ArrayList<>());
     }
+
+    public void addMenu(Menu menu) {
+        menus.add(menu);
+    }
 }

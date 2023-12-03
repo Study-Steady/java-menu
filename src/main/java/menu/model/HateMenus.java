@@ -21,6 +21,11 @@ public class HateMenus {
         return new HateMenus(new ArrayList<>());
     }
 
+    public boolean isNotHateMenu(Menu recommendedMenu) {
+        return menus.stream()
+                .noneMatch(menu -> menu.equals(recommendedMenu));
+    }
+
     public void addMenus(List<Menu> hateMenus) {
         List<Menu> filteredHateMenus = hateMenus.stream()
                 .filter(Menu::isValidMenu)

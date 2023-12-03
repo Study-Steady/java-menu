@@ -82,5 +82,9 @@ public enum Menu {
     public boolean isValidMenu() {
         return this != NONE;
     }
+
+    public String getName() {
+        return name;
+    }
 }
 
