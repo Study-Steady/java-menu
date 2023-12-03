@@ -1,5 +1,6 @@
 package menu.view.input;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import menu.domain.coach.Coaches;
@@ -19,7 +20,7 @@ public class InputView {
     }
 
     public List<String> inputCoachNames() {
-        printer.printLine(InputGuideMessage.COACH_NAME_INPUT.getMessage());
+        printer.printWithEmptyLineAhead(InputGuideMessage.COACH_NAME_INPUT.getMessage());
         String rawInput = reader.readLine();
 
         StringValidator.validateHasText(rawInput);
@@ -28,6 +29,15 @@ public class InputView {
         validateCoachSize(coachNames);
 
         return coachNames;
+    }
+
+    public List<String> inputRestrictedMenu(String coachName) {
+        printer.printWithEmptyLineAhead(coachName + InputGuideMessage.RESTRICTED_MENU_INPUT.getMessage());
+        String rawInput = reader.readLine();
+
+        StringValidator.validateHasText(rawInput);
+
+        return StringConvertor.splitByComma(rawInput);
     }
 
     private void validateCoachSize(List<String> coachNames) {
@@ -42,10 +52,6 @@ public class InputView {
         }
         return coachNames.size() >= Coaches.MIN_COACH_SIZE
                 && coachNames.size() <= Coaches.MAX_COACH_SIZE;
-    }
-
-    public List<String> inputRestrictedMenu() {
-        return null;
     }
 
 }
