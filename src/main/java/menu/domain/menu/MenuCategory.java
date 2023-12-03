@@ -16,8 +16,8 @@ public enum MenuCategory {
     private int num;
 
     MenuCategory(String name, int num) {
-        this.name = this.name();
-        this.num = this.ordinal();
+        this.name = name;
+        this.num = num;
     }
 
     public String getName() {
