@@ -13,6 +13,8 @@ public class Menu {
     }
 
     public static List<Menu> namesOf(List<String> menuNames) {
+        MenuBoard.validateMenuNameExist(menuNames);
+
         return menuNames.stream()
                 .map(Menu::new)
                 .collect(Collectors.toList());

@@ -87,6 +87,19 @@ public enum MenuBoard {
         return getByCategory(category).getMenuByName(menuName);
     }
 
+    public static void validateMenuNameExist(List<String> menuNames) {
+        if (!allExist(menuNames)) {
+            throw new IllegalArgumentException("없는 메뉴 이름이 존재합니다.");
+        }
+    }
+
+    private static boolean allExist(List<String> menuNames) {
+        return menuNames.stream()
+                .allMatch(menuName -> Arrays.stream(MenuBoard.values())
+                        .anyMatch(menuBoard -> menuBoard.getMenuNames().contains(menuName))
+                );
+    }
+
     private Menu getMenuByName(String menuName) {
         return this.menu.stream()
                 .filter(menu -> menu.matchesName(menuName))
