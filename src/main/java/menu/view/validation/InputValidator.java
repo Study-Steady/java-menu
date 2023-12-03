@@ -18,6 +18,12 @@ public class InputValidator {
                 });
     }
 
+    public static void validateCoacheNameType(String input) {
+        if (!RegexPattern.KOREAN_OR_ENGLISH.matches(input)) {
+            throw new IllegalArgumentException("코치 이름은 한글 또는 영어만 입력할 수 있습니다.");
+        }
+    }
+
     public static void validateCoachesCount(String input) {
         String[] coaches = StringConvertor.splitByComma(input);
         Arrays.stream(coaches)
