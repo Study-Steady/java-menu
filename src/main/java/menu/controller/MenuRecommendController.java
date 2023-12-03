@@ -6,22 +6,28 @@ import menu.model.Coach;
 import menu.model.CoachName;
 import menu.model.Coaches;
 import menu.model.Menu;
+import menu.model.MenuCategory;
+import menu.model.NumberGenerator;
 import menu.view.InputView;
 import menu.view.OutputView;
 
 public class MenuRecommendController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final NumberGenerator numberGenerator;
 
-    public MenuRecommendController(InputView inputView, OutputView outputView) {
+    public MenuRecommendController(InputView inputView, OutputView outputView, NumberGenerator numberGenerator) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.numberGenerator = numberGenerator;
     }
 
     public void run() {
         outputView.printStartMessage();
         Coaches coaches = fetch(this::readCoachNames);
         handleHateMenusOfCoaches(coaches);
+        List<MenuCategory> menuCategories = MenuCategory.recommendCategory(numberGenerator);
+
     }
 
     private void handleHateMenusOfCoaches(Coaches coaches) {
