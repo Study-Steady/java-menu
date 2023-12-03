@@ -13,6 +13,7 @@ public class OutputView {
 
     public void printStartMessage() {
         println("점심 메뉴 추천을 시작합니다.");
+        printEmptyLine();
     }
 
     private void printEmptyLine() {

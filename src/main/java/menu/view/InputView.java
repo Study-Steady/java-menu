@@ -3,27 +3,42 @@ package menu.view;
 import java.util.List;
 import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
+import menu.view.validator.BlankValidator;
+import menu.view.validator.CoachNamesValidator;
 
 public class InputView {
 
-    private String readLine() {
-        return Console.readLine().trim();
+    public List<String> readCoachNames() {
+        println("코치의 이름을 입력해 주세요. (, 로 구분)");
+        String rawCoachNames = readLine();
+        validateCoachNames(rawCoachNames);
+        return split(",", rawCoachNames);
     }
 
-    private void print(String message) {
-        System.out.print(message);
+    private void validateCoachNames(String rawCoachNames) {
+        BlankValidator.validate(rawCoachNames);
+        CoachNamesValidator.validate(rawCoachNames);
+
+    }
+
+    private String readLine() {
+        return Console.readLine().trim();
     }
 
     private void println(String message) {
         System.out.println(message);
     }
 
-    private void printEmptyLine() {
-        System.out.println();
-    }
-
     private List<String> split(String format, String input) {
         return List.of(input.split(format));
+    }
+
+    private void print(String message) {
+        System.out.print(message);
+    }
+
+    private void printEmptyLine() {
+        System.out.println();
     }
 
     private List<Integer> splitToInt(String delimiter, String input) {
