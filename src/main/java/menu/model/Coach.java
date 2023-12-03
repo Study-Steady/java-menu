@@ -22,7 +22,7 @@ public class Coach {
         return new Coach(coachName, hateMenus, recommendMenus);
     }
 
-    public void addHateMenus(List<Menu> hateMenus) {
+    public void addHateMenus(HateMenus hateMenus) {
         this.hateMenus.addMenus(hateMenus);
     }
 

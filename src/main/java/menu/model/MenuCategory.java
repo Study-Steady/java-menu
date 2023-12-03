@@ -34,6 +34,7 @@ public enum MenuCategory {
         this.menus = menus;
     }
 
+    // TODO : 테스트 필요
     public static RecommendedMenuCategories recommendCategory(NumberGenerator numberGenerator) {
         List<MenuCategory> recommendedMenuCategory = getMenuCategories(numberGenerator);
 

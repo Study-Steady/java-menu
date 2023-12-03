@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import menu.model.Coach;
 import menu.model.CoachName;
 import menu.model.Coaches;
-import menu.model.Menu;
+import menu.model.HateMenus;
 import menu.model.MenuCategory;
 import menu.model.NumberGenerator;
 import menu.model.Picker;
@@ -38,16 +38,14 @@ public class MenuRecommendController {
 
     private void handleHateMenusOfCoaches(Coaches coaches) {
         for (Coach coach : coaches.getCoaches()) {
-            List<Menu> hateMenus = fetch(() -> readHateMenus(coach.getName()));
+            HateMenus hateMenus = fetch(() -> readHateMenus(coach.getName()));
             coach.addHateMenus(hateMenus);
         }
     }
 
-    private List<Menu> readHateMenus(CoachName coachName) {
+    private HateMenus readHateMenus(CoachName coachName) {
         List<String> rawHateMenus = inputView.readHateMenu(coachName);
-        return rawHateMenus.stream()
-                .map(Menu::from)
-                .toList();
+        return HateMenus.from(rawHateMenus);
     }
 
     private Coaches readCoachNames() {

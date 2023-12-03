@@ -6,15 +6,23 @@ import java.util.List;
 public class HateMenus {
     private final List<Menu> menus;
 
-    public HateMenus(List<Menu> menus) {
+    HateMenus(List<Menu> menus) {
         validate(menus);
         this.menus = menus;
     }
 
     private void validate(List<Menu> menus) {
-        if (menus.size() > 3) {
+        if (menus.size() > 2) {
             throw new IllegalArgumentException("싫어하는 음식은 최소 0게 최대 2개까지만 가능합니다.");
         }
+    }
+
+    public static HateMenus from(List<String> rawHateMenus) {
+        List<Menu> hateMenus = rawHateMenus.stream()
+                .map(Menu::from)
+                .toList();
+
+        return new HateMenus(hateMenus);
     }
 
     public static HateMenus defaultOf() {
@@ -26,11 +34,7 @@ public class HateMenus {
                 .noneMatch(menu -> menu.equals(recommendedMenu));
     }
 
-    public void addMenus(List<Menu> hateMenus) {
-        List<Menu> filteredHateMenus = hateMenus.stream()
-                .filter(Menu::isValidMenu)
-                .toList();
-
-        this.menus.addAll(filteredHateMenus);
+    public void addMenus(HateMenus hateMenus) {
+        this.menus.addAll(hateMenus.menus);
     }
 }

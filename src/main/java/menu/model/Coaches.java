@@ -3,6 +3,9 @@ package menu.model;
 import java.util.List;
 
 public class Coaches {
+    private static final int MIN_COACH_COUNT = 2;
+    private static final int MAX_COACH_COUNT = 5;
+
     private final List<Coach> coaches;
 
     public Coaches(List<Coach> coaches) {
@@ -11,8 +14,9 @@ public class Coaches {
     }
 
     private void validate(List<Coach> coaches) {
-        if (coaches.size() < 2 || coaches.size() > 5) {
-            throw new IllegalArgumentException("코치는 최소 2명, 최대 5명까지 식사를 함께 합니다.");
+        if (coaches.size() < MIN_COACH_COUNT || coaches.size() > MAX_COACH_COUNT) {
+            throw new IllegalArgumentException(
+                    String.format("코치는 최소 %d명, 최대 %d명까지 식사를 함께 합니다.", MIN_COACH_COUNT, MAX_COACH_COUNT));
         }
     }
 
