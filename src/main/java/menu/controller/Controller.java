@@ -29,11 +29,29 @@ public class Controller {
     public void run() {
         welcomePlayer();
 
-        Coaches coaches = inputCoaches();
+        List<CoachName> coachNames = inputCoachNames();
 
-        MenuRecommender recommender = setUpMenuRecommender(coaches);
+        List<Coach> coaches = new ArrayList<>();
+
+        for (CoachName name : coachNames) {
+            coaches.add(new Coach(name, inputRestrictedMenu(name)));
+        }
+
+        MenuRecommender recommender = setUpMenuRecommender(Coaches.from(coaches));
 
         showRecommendResult(recommender);
+    }
+
+    private void welcomePlayer() {
+        outputView.welcomePlayer();
+    }
+
+    private List<CoachName> inputCoachNames() {
+        return input(() -> CoachName.namesOf(inputView.inputCoachNames()));
+    }
+
+    private RestrictedMenu inputRestrictedMenu(CoachName name) {
+        return input(() -> RestrictedMenu.from(Menu.namesOf(inputView.inputRestrictedMenu(name.getName()))));
     }
 
     private MenuRecommender setUpMenuRecommender(Coaches coaches) {
@@ -46,29 +64,6 @@ public class Controller {
 
     private void showRecommendResult(MenuRecommender recommender) {
         outputView.showMenuRecommendResult(recommender.recommend());
-    }
-
-    private Coaches inputCoaches() {
-        return input(() -> {
-            List<CoachName> coachNames = CoachName.namesOf(inputView.inputCoachNames());
-
-            List<Coach> coaches = new ArrayList<>();
-
-            for (CoachName name : coachNames) {
-                List<Menu> restrictedMenuList = inputRestrictedMenu(name);
-                coaches.add(new Coach(name, RestrictedMenu.from(restrictedMenuList)));
-            }
-
-            return Coaches.from(coaches);
-        });
-    }
-
-    private List<Menu> inputRestrictedMenu(CoachName name) {
-        return input(() -> Menu.namesOf(inputView.inputRestrictedMenu(name.getName())));
-    }
-
-    private void welcomePlayer() {
-        outputView.welcomePlayer();
     }
 
     private <T> T input(Supplier<T> supplier) {
