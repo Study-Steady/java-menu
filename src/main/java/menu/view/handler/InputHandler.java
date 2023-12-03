@@ -1,6 +1,13 @@
 package menu.view.handler;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import menu.domain.Coach;
+import menu.domain.Coaches;
+import menu.domain.CoachesFactory;
+import menu.util.StringConvertor;
 import menu.view.ErrorView;
 import menu.view.InputView;
 
@@ -13,8 +20,11 @@ public class InputHandler {
         this.errorView = errorView;
     }
 
-    public String receiveValidatedCoches() {
-        return receiveValidatedInput(inputView::inputCoaches);
+    public Coaches createValidatedCoaches() {
+        return receiveValidatedInput(() -> {
+            String inputCoaches = inputView.inputCoaches();
+            return CoachesFactory.createCoachesBy(inputCoaches);
+        });
     }
 
     private <T> T receiveValidatedInput(Supplier<T> inputView) {
