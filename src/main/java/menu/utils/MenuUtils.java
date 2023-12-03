@@ -13,6 +13,6 @@ public class MenuUtils {
     }
 
     public static Menu getRandomMenu(MenuCategory menuCategory) {
-        return Menu.getMenusByMenuCategory(menuCategory).get(0);
+        return Randoms.shuffle(Menu.getMenusByMenuCategory(menuCategory)).get(0);
     }
 }
