@@ -6,8 +6,8 @@ import java.util.Objects;
 
 public class Coaches {
 
-    private static final int MIN_COACH_SIZE = 2;
-    private static final int MAX_COACH_SIZE = 5;
+    public static final int MIN_COACH_SIZE = 2;
+    public static final int MAX_COACH_SIZE = 5;
 
     private final List<Coach> coaches;
 
