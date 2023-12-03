@@ -17,4 +17,8 @@ public class CoachName {
     public static CoachName from(String name) {
         return new CoachName(name);
     }
+
+    public String getName() {
+        return name;
+    }
 }

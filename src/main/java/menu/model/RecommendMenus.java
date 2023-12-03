@@ -1,0 +1,16 @@
+package menu.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RecommendMenus {
+    private final List<Menu> menus;
+
+    public RecommendMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public static RecommendMenus defaultOf() {
+        return new RecommendMenus(new ArrayList<>());
+    }
+}

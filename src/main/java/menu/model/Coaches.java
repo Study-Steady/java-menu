@@ -23,4 +23,8 @@ public class Coaches {
 
         return new Coaches(coaches);
     }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
 }

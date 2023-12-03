@@ -3,10 +3,10 @@ package menu.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HateMenu {
+public class HateMenus {
     private final List<Menu> menus;
 
-    public HateMenu(List<Menu> menus) {
+    public HateMenus(List<Menu> menus) {
         validate(menus);
         this.menus = menus;
     }
@@ -17,7 +17,15 @@ public class HateMenu {
         }
     }
 
-    public static HateMenu defaultOf() {
-        return new HateMenu(new ArrayList<>());
+    public static HateMenus defaultOf() {
+        return new HateMenus(new ArrayList<>());
+    }
+
+    public void addMenus(List<Menu> hateMenus) {
+        List<Menu> filteredHateMenus = hateMenus.stream()
+                .filter(Menu::isValidMenu)
+                .toList();
+
+        this.menus.addAll(filteredHateMenus);
     }
 }

@@ -1,5 +1,7 @@
 package menu.model;
 
+import java.util.stream.Stream;
+
 public enum Menu {
     // 일식
     GYUDON("규동"),
@@ -54,7 +56,10 @@ public enum Menu {
     BAGUETTE("바게트"),
     SPAGHETTI("스파게티"),
     PIZZA("피자"),
-    PANINI("파니니");
+    PANINI("파니니"),
+
+    // 기본값
+    NONE("없음");
 
     private final String name;
 
@@ -62,5 +67,20 @@ public enum Menu {
         this.name = name;
     }
 
+    // TODO : 리펙토링 필요
+    public static Menu from(String menuName) {
+        if (menuName.isBlank()) {
+            return NONE;
+        }
+
+        return Stream.of(values())
+                .filter(menu -> menu.name.equals(menuName))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 메뉴입니다."));
+    }
+
+    public boolean isValidMenu() {
+        return this != NONE;
+    }
 }
 
