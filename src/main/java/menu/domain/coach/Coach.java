@@ -15,10 +15,6 @@ public class Coach {
         this.restrictedMenu = restrictedMenu;
     }
 
-    public static Coach of(CoachName name, RestrictedMenu restrictedMenu) {
-        return new Coach(name, restrictedMenu);
-    }
-
     public String getName() {
         return name.getName();
     }
