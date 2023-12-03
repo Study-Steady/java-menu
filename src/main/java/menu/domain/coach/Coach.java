@@ -5,10 +5,6 @@ import menu.domain.menu.MenuBlackList;
 import menu.domain.menu.MenuHistory;
 
 public class Coach {
-    private static final int MAX_COACH_NAME_LENGTH = 4;
-    private static final int MIN_COACH_NAME_LENGTH = 2;
-
-    // private final String name;
     private final CoachName name;
     private final MenuHistory menuHistory;
     private final MenuBlackList menuBlackList;
