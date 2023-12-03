@@ -23,6 +23,8 @@ public enum MenuCategory {
 
     private static final int MIN_CATEGORY_NUMBER = 1;
     private static final int MAX_CATEGORY_NUMBER = 5;
+    private static final int MAX_SIZE = 5;
+    private static final int MAX_FREQUENCY = 2;
 
     private final String name;
     private final int categoryNumber;
@@ -34,7 +36,6 @@ public enum MenuCategory {
         this.menus = menus;
     }
 
-    // TODO : 테스트 필요
     public static RecommendedMenuCategories recommendCategory(NumberGenerator numberGenerator) {
         List<MenuCategory> recommendedMenuCategory = getMenuCategories(numberGenerator);
 
@@ -60,7 +61,7 @@ public enum MenuCategory {
         return Stream.generate(() -> numberGenerator.generateBetween(MIN_CATEGORY_NUMBER, MAX_CATEGORY_NUMBER))
                 .filter(categoryNumber -> categoryNumber >= MIN_CATEGORY_NUMBER
                         && categoryNumber <= MAX_CATEGORY_NUMBER)
-                .limit(5)
+                .limit(MAX_SIZE)
                 .map(MenuCategory::findCategoryByNumber)
                 .toList();
     }
@@ -68,7 +69,7 @@ public enum MenuCategory {
     private static boolean isOverRecommended(List<MenuCategory> recommendedMenuCategory) {
         for (MenuCategory menuCategory : MenuCategory.values()) {
             int frequency = Collections.frequency(recommendedMenuCategory, menuCategory);
-            if (frequency > 2) {
+            if (frequency > MAX_FREQUENCY) {
                 return true;
             }
         }

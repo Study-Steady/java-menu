@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HateMenus {
+    private static final int MAX_HATE_MENU_COUNT = 2;
+
     private final List<Menu> menus;
 
     HateMenus(List<Menu> menus) {
@@ -12,7 +14,7 @@ public class HateMenus {
     }
 
     private void validate(List<Menu> menus) {
-        if (menus.size() > 2) {
+        if (menus.size() > MAX_HATE_MENU_COUNT) {
             throw new IllegalArgumentException("싫어하는 음식은 최소 0게 최대 2개까지만 가능합니다.");
         }
     }
