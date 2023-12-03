@@ -33,11 +33,11 @@ public enum MenuCategory {
     }
 
     private static final Map<Integer, MenuCategory> BY_NUM =
-            Stream.of(values())
-                    .collect(
-                            Collectors.toMap(
-                                    MenuCategory::getNum,
-                                    menuCategory -> menuCategory
-                            )
-                    );
+        Stream.of(values())
+            .collect(
+                Collectors.toMap(
+                    MenuCategory::getNum,
+                    menuCategory -> menuCategory
+                )
+            );
 }

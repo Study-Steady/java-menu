@@ -24,6 +24,7 @@ public class InputView {
         this.reader = reader;
         this.printer = printer;
     }
+
     public List<CoachName> getCoachManager() {
         printer.printMessage(INPUT_COACH_NAME.getMessage());
         String input = reader.readLine();

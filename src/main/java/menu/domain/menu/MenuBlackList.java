@@ -15,8 +15,8 @@ public class MenuBlackList {
     public static MenuBlackList from(Set<String> rawBlackList) {
         validateBlackListSize(rawBlackList);
         Set<Menu> blackList = rawBlackList.stream()
-                .map(Menu::fromName)
-                .collect(Collectors.toSet());
+            .map(Menu::fromName)
+            .collect(Collectors.toSet());
         return new MenuBlackList(blackList);
     }
 

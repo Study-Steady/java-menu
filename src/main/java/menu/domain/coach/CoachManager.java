@@ -21,7 +21,7 @@ public class CoachManager {
 
     public void addMenusEachFromMenuCategory(MenuCategory menuCategory) {
         coaches.forEach(
-                c -> process(c::addMenu, menuCategory)
+            c -> process(c::addMenu, menuCategory)
         );
     }
 

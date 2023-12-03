@@ -22,7 +22,7 @@ public class OutputFormatter {
 
         addDays(sb);
         formatMenuCategory(sb, menuCategoryGroup);
-        for (Coach coach: coachManager.getCoaches()) {
+        for (Coach coach : coachManager.getCoaches()) {
             formatCoach(sb, coach);
         }
         return sb.toString();
@@ -42,7 +42,7 @@ public class OutputFormatter {
     private static void formatMenuCategory(StringBuilder sb, MenuCategoryGroup menuCategoryGroup) {
         sb.append(RESULT_START.getSymbol());
         sb.append(CATEGORY.getSymbol());
-        for(MenuCategory category: menuCategoryGroup.getMenuCategoryGroup()) {
+        for (MenuCategory category : menuCategoryGroup.getMenuCategoryGroup()) {
             sb.append(RESULT_DELIMITER.getSymbol());
             sb.append(category.getName());
         }
@@ -53,7 +53,7 @@ public class OutputFormatter {
     private static void formatCoach(StringBuilder sb, Coach coach) {
         sb.append(RESULT_START.getSymbol());
         sb.append(coach.getName().getName());
-        for (Menu menu: coach.getMenuHistory().getHistory()) {
+        for (Menu menu : coach.getMenuHistory().getHistory()) {
             sb.append(RESULT_DELIMITER.getSymbol());
             sb.append(menu.getName());
         }

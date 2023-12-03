@@ -20,12 +20,12 @@ public class MenuHistory {
 
     public static MenuHistory create() {
         Map<MenuCategory, Integer> menuCategoryCount =
-                Stream.of(MenuCategory.values())
-                        .collect(Collectors.toMap(
-                                        menuCategory -> menuCategory,
-                                        menuCategory -> 0
-                                )
-                        );
+            Stream.of(MenuCategory.values())
+                .collect(Collectors.toMap(
+                        menuCategory -> menuCategory,
+                        menuCategory -> 0
+                    )
+                );
         return new MenuHistory(new ArrayList<>(), menuCategoryCount);
     }
 

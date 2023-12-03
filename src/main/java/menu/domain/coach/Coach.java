@@ -13,7 +13,7 @@ public class Coach {
     private final MenuHistory menuHistory;
     private final MenuBlackList menuBlackList;
 
-    private Coach (CoachName name, MenuHistory menuHistory, MenuBlackList menuBlackList) {
+    private Coach(CoachName name, MenuHistory menuHistory, MenuBlackList menuBlackList) {
         this.name = name;
         this.menuHistory = menuHistory;
         this.menuBlackList = menuBlackList;

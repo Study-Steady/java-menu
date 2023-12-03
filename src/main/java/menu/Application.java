@@ -18,7 +18,8 @@ public class Application {
         OutputView outputView = new OutputView(printer);
         MenuCategoryGroup menuCategoryGroup = MenuCategoryGroup.create();
 
-        MenuRecommendController menuRecommendController = MenuRecommendController.of(inputView, outputView, menuCategoryGroup);
+        MenuRecommendController menuRecommendController = MenuRecommendController.of(inputView, outputView,
+            menuCategoryGroup);
         menuRecommendController.run();
     }
 }

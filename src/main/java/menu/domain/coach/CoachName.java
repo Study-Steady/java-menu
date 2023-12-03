@@ -17,7 +17,8 @@ public class CoachName {
     }
 
     private static void validateCoachName(String coachName) {
-        if (coachName.length() < CoachConstant.MIN_COACH_NAME_LENGTH.getNum() || coachName.length() > CoachConstant.MAX_COACH_NAME_LENGTH.getNum()) {
+        if (coachName.length() < CoachConstant.MIN_COACH_NAME_LENGTH.getNum()
+            || coachName.length() > CoachConstant.MAX_COACH_NAME_LENGTH.getNum()) {
             throw new IllegalArgumentException();
         }
     }

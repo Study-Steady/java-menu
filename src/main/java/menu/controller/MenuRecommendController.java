@@ -25,7 +25,8 @@ public class MenuRecommendController {
         this.menuCategoryGroup = menuCategoryGroup;
     }
 
-    public static MenuRecommendController of(InputView inputView, OutputView outputView, MenuCategoryGroup menuCategoryGroup) {
+    public static MenuRecommendController of(InputView inputView, OutputView outputView,
+                                             MenuCategoryGroup menuCategoryGroup) {
         return new MenuRecommendController(inputView, outputView, menuCategoryGroup);
     }
 
@@ -64,7 +65,7 @@ public class MenuRecommendController {
     }
 
     private void recommendMenu() {
-        for (MenuCategory category: menuCategoryGroup.getMenuCategoryGroup()) {
+        for (MenuCategory category : menuCategoryGroup.getMenuCategoryGroup()) {
             coachManager.addMenusEachFromMenuCategory(category);
         }
     }

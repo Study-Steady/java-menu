@@ -25,8 +25,8 @@ public class StringUtils {
     public static List<CoachName> convertStringToCoachNames(String rawCoachNames) {
         String[] coachNames = rawCoachNames.split(DELIMITER.getSymbol());
         return Arrays.stream(coachNames)
-                .map(CoachName::from)
-                .collect(Collectors.toList());
+            .map(CoachName::from)
+            .collect(Collectors.toList());
     }
 
     public static Set<String> splitStringByDelimeterAndConvertToSet(String input) {
