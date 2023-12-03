@@ -67,7 +67,6 @@ public enum Menu {
         this.name = name;
     }
 
-    // TODO : 리펙토링 필요
     public static Menu from(String menuName) {
         if (menuName.isBlank()) {
             return NONE;
