@@ -48,7 +48,7 @@ public class MenuHistory {
         }
     }
 
-    public void validateMenuCategoryCount(MenuCategory menuCategory) {
+    private void validateMenuCategoryCount(MenuCategory menuCategory) {
         if (menuCategoryCount.get(menuCategory) >= MAX_MENU_CATEGORY_COUNT) {
             throw new IllegalArgumentException();
         }
