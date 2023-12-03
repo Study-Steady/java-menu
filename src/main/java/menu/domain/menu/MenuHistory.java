@@ -1,4 +1,4 @@
-package menu.domain.coach;
+package menu.domain.menu;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import menu.domain.menu.Menu;
-import menu.domain.menu.MenuCategory;
 
 public class MenuHistory {
     private static final int MAX_MENU_CATEGORY_COUNT = 2;

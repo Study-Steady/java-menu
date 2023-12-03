@@ -1,7 +1,8 @@
 package menu.domain.coach;
 
-import java.util.Set;
 import menu.domain.menu.Menu;
+import menu.domain.menu.MenuBlackList;
+import menu.domain.menu.MenuHistory;
 
 public class Coach {
     private static final int MAX_COACH_NAME_LENGTH = 4;

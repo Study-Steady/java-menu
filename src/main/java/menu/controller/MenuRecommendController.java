@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 import menu.domain.coach.Coach;
 import menu.domain.coach.CoachManager;
 import menu.domain.coach.CoachName;
-import menu.domain.coach.MenuBlackList;
+import menu.domain.menu.MenuBlackList;
 import menu.domain.menu.MenuCategory;
 import menu.domain.menu.MenuCategoryGroup;
 import menu.utils.OutputFormatter;

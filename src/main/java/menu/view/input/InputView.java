@@ -5,7 +5,6 @@ import static menu.exception.ExceptionMessage.INVALID_COACH_NUM;
 import static menu.exception.ExceptionMessage.INVALID_INPUT;
 import static menu.utils.StringUtils.convertStringToCoachNames;
 import static menu.utils.StringUtils.splitStringByDelimeterAndConvertToSet;
-import static menu.utils.StringUtils.splitStringByDelimter;
 import static menu.view.input.InputMessage.INPUT_BLACKLIST_MENU;
 import static menu.view.input.InputMessage.INPUT_COACH_NAME;
 
@@ -14,7 +13,7 @@ import java.util.Objects;
 import java.util.Set;
 import menu.domain.coach.CoachConstant;
 import menu.domain.coach.CoachName;
-import menu.domain.coach.MenuBlackList;
+import menu.domain.menu.MenuBlackList;
 import menu.view.output.Printer;
 
 public class InputView {

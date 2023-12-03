@@ -1,8 +1,7 @@
-package menu.domain.coach;
+package menu.domain.menu;
 
 import java.util.Set;
 import java.util.stream.Collectors;
-import menu.domain.menu.Menu;
 
 public class MenuBlackList {
     private static final int MAX_BLACK_LIST_SIZE = 2;
