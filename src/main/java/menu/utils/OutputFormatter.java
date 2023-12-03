@@ -20,6 +20,15 @@ public class OutputFormatter {
     public static String format(MenuCategoryGroup menuCategoryGroup, CoachManager coachManager) {
         StringBuilder sb = new StringBuilder();
 
+        addDays(sb);
+        formatMenuCategory(sb, menuCategoryGroup);
+        for (Coach coach: coachManager.getCoaches()) {
+            formatCoach(sb, coach);
+        }
+        return sb.toString();
+    }
+
+    private static void addDays(StringBuilder sb) {
         sb.append(RESULT_START.getSymbol());
         sb.append(DEFINE.getSymbol());
         for (int i = 0; i < 5; i++) {
@@ -28,7 +37,9 @@ public class OutputFormatter {
         }
         sb.append(RESULT_END.getSymbol());
         sb.append(NEW_LINE.getSymbol());
+    }
 
+    private static void formatMenuCategory(StringBuilder sb, MenuCategoryGroup menuCategoryGroup) {
         sb.append(RESULT_START.getSymbol());
         sb.append(CATEGORY.getSymbol());
         for(MenuCategory category: menuCategoryGroup.getMenuCategoryGroup()) {
@@ -37,19 +48,16 @@ public class OutputFormatter {
         }
         sb.append(RESULT_END.getSymbol());
         sb.append(NEW_LINE.getSymbol());
+    }
 
-        for (Coach coach: coachManager.getCoaches()) {
-            sb.append(RESULT_START.getSymbol());
-            sb.append(coach.getName().getName());
-            for (Menu menu: coach.getMenuHistory().getHistory()) {
-                sb.append(RESULT_DELIMETER.getSymbol());
-                sb.append(menu.getName());
-            }
-            sb.append(RESULT_END.getSymbol());
-            sb.append(NEW_LINE.getSymbol());
+    private static void formatCoach(StringBuilder sb, Coach coach) {
+        sb.append(RESULT_START.getSymbol());
+        sb.append(coach.getName().getName());
+        for (Menu menu: coach.getMenuHistory().getHistory()) {
+            sb.append(RESULT_DELIMETER.getSymbol());
+            sb.append(menu.getName());
         }
-
-
-        return sb.toString();
+        sb.append(RESULT_END.getSymbol());
+        sb.append(NEW_LINE.getSymbol());
     }
 }
