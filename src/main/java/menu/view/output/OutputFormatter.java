@@ -26,9 +26,13 @@ public class OutputFormatter {
                 .map(string -> CharacterSymbol.BLANK.getLiteral() + string + CharacterSymbol.BLANK.getLiteral())
                 .collect(Collectors.joining("|"));
 
+        return surroundWithBracket(formatted);
+    }
+
+    private static String surroundWithBracket(String source) {
         return new StringBuilder()
                 .append("[")
-                .append(formatted)
+                .append(source)
                 .append("]")
                 .toString();
     }
@@ -42,11 +46,7 @@ public class OutputFormatter {
                         .collect(Collectors.toList())
         );
 
-        return new StringBuilder()
-                .append("[")
-                .append(toFormat(strings))
-                .append("]")
-                .toString();
+        return surroundWithBracket(toFormat(strings));
     }
 
     private static String toFormat(List<String> strings) {
