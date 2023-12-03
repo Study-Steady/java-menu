@@ -13,15 +13,6 @@ public class StringUtils {
     private StringUtils() {
     }
 
-    public static Menu convertStringToMenu(String input) {
-        return Menu.fromName(input);
-    }
-
-    public static List<String> splitStringByDelimter(String input) {
-        String[] rawCoachNames = input.split(DELIMITER.getSymbol());
-        return List.of(rawCoachNames);
-    }
-
     public static List<CoachName> convertStringToCoachNames(String rawCoachNames) {
         String[] coachNames = rawCoachNames.split(DELIMITER.getSymbol());
         return Arrays.stream(coachNames)
