@@ -6,47 +6,47 @@ import java.util.Set;
 import menu.util.StringConvertor;
 import menu.view.validation.RegexPattern;
 
-public class Coache {
+public class Coach {
     private static final int MIN_COMMON_LENGTH = 2;
     private static final int MAX_NAME_LENGTH = 4;
-    private static final int MAX_COACHE_COUNT = 5;
+    private static final int MAX_COACH_COUNT = 5;
     private String name;
 
-    private Coache(String name) {
+    private Coach(String name) {
         this.name = name;
     }
 
-    public static Coache from(String input) {
+    public static Coach from(String input) {
         String[] coaches = StringConvertor.splitByComma(input);
-        validateCoacheName(coaches);
-        validateCoacheNameType(coaches);
-        validateCoachesCount(coaches);
+        validateCoachName(coaches);
+        validateCoachNameType(coaches);
+        validateCoachCount(coaches);
         validateDuplicate(coaches);
-        return new Coache(input);
+        return new Coach(input);
     }
 
-    private static void validateCoacheName(String[] coaches) {
+    private static void validateCoachName(String[] coaches) {
         Arrays.stream(coaches)
-                .forEach(coache -> {
-                    if(coache.length() < MIN_COMMON_LENGTH || coache.length() > MAX_NAME_LENGTH) {
+                .forEach(coach -> {
+                    if(coach.length() < MIN_COMMON_LENGTH || coach.length() > MAX_NAME_LENGTH) {
                         throw new IllegalArgumentException("코치 이름은 2글자 이상 4글자 이하이어야 합니다");
                     }
                 });
     }
 
-    private static void validateCoacheNameType(String[] coaches) {
+    private static void validateCoachNameType(String[] coaches) {
         Arrays.stream(coaches)
-                .forEach(coache -> {
-                    if (!RegexPattern.KOREAN_OR_ENGLISH.matches(coache)) {
+                .forEach(coach -> {
+                    if (!RegexPattern.KOREAN_OR_ENGLISH.matches(coach)) {
                         throw new IllegalArgumentException("코치 이름은 한글 또는 영어만 입력할 수 있습니다.");
                     }
                 });
     }
 
-    public static void validateCoachesCount(String[] coaches) {
+    public static void validateCoachCount(String[] coaches) {
         Arrays.stream(coaches)
-                .forEach(coache -> {
-                    if (coache.length() < MIN_COMMON_LENGTH || coache.length() > MAX_COACHE_COUNT) {
+                .forEach(coach -> {
+                    if (coach.length() < MIN_COMMON_LENGTH || coach.length() > MAX_COACH_COUNT) {
                         throw new IllegalArgumentException("코치의 수는 최소 2명 최대 5명이어야 합니다.");
                     }
                 });
