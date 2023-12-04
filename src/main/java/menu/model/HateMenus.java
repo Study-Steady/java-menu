@@ -17,6 +17,9 @@ public class HateMenus {
         if (menus.size() > MAX_HATE_MENU_COUNT) {
             throw new IllegalArgumentException("싫어하는 음식은 최소 0게 최대 2개까지만 가능합니다.");
         }
+        if (menus.stream().distinct().count() != menus.size()) {
+            throw new IllegalArgumentException("싫어하는 음식은 중복되지 않아야 합니다.");
+        }
     }
 
     public static HateMenus from(List<String> rawHateMenus) {

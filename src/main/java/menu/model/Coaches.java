@@ -30,7 +30,7 @@ public class Coaches {
 
     public void recommendMenus(List<String> menuNames, Picker picker) {
         for (Coach coach : coaches) {
-            coach.recommendMenu(menuNames, picker);
+            coach.recommendedMenu(menuNames, picker);
         }
     }
 

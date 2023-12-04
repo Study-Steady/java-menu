@@ -26,15 +26,15 @@ public class Coach {
         this.hateMenus.addMenus(hateMenus);
     }
 
-    public void recommendMenu(List<String> menuNames, Picker picker) {
-        Stream.generate(() -> getRecommendedMenu(menuNames, picker))
+    public void recommendedMenu(List<String> menuNames, Picker picker) {
+        Stream.generate(() -> getRandomMenu(menuNames, picker))
                 .filter(recommendMenu -> recommendMenu.notIn(hateMenus))
                 .filter(recommendMenu -> recommendMenu.notIn(recommendMenus))
                 .findFirst()
                 .ifPresent(recommendMenus::addMenu);
     }
 
-    private static Menu getRecommendedMenu(List<String> menuNames, Picker picker) {
+    private static Menu getRandomMenu(List<String> menuNames, Picker picker) {
         String menuName = picker.pickOne(menuNames);
         return Menu.from(menuName);
     }
