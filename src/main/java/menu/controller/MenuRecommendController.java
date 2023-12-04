@@ -6,7 +6,6 @@ import menu.model.Coach;
 import menu.model.CoachName;
 import menu.model.Coaches;
 import menu.model.HateMenus;
-import menu.model.MenuCategory;
 import menu.model.NumberGenerator;
 import menu.model.Picker;
 import menu.model.RecommendedMenuCategories;
@@ -31,7 +30,7 @@ public class MenuRecommendController {
         outputView.printStartMessage();
         Coaches coaches = fetch(this::readCoachNames);
         handleHateMenusOfCoaches(coaches);
-        RecommendedMenuCategories menuCategories = MenuCategory.recommendCategory(numberGenerator);
+        RecommendedMenuCategories menuCategories = RecommendedMenuCategories.create(numberGenerator);
         menuCategories.recommendMenus(coaches, picker);
         outputView.printResult(coaches, menuCategories);
     }

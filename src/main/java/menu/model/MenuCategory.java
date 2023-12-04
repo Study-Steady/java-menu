@@ -1,6 +1,5 @@
 package menu.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -36,14 +35,20 @@ public enum MenuCategory {
         this.menus = menus;
     }
 
-    public static RecommendedMenuCategories recommendCategory(NumberGenerator numberGenerator) {
-        List<MenuCategory> recommendedMenuCategory = getMenuCategories(numberGenerator);
-
-        if (isOverRecommended(recommendedMenuCategory)) {
-            return recommendCategory(numberGenerator);
+    public static MenuCategory findCategory(NumberGenerator numberGenerator) {
+        while (true) {
+            int randomNumber = numberGenerator.generateBetween(MIN_CATEGORY_NUMBER, MAX_CATEGORY_NUMBER);
+            if (randomNumber >= MIN_CATEGORY_NUMBER && randomNumber <= MAX_CATEGORY_NUMBER) {
+                return findCategoryByNumber(randomNumber);
+            }
         }
+    }
 
-        return RecommendedMenuCategories.from(recommendedMenuCategory);
+    private static MenuCategory findCategoryByNumber(int categoryNumber) {
+        return Stream.of(MenuCategory.values())
+                .filter(menuCategory -> menuCategory.categoryNumber == categoryNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
     }
 
     public void recommendMenusTo(Coaches coaches, Picker picker) {
@@ -55,32 +60,6 @@ public enum MenuCategory {
         return menus.stream()
                 .map(Menu::getName)
                 .toList();
-    }
-
-    private static List<MenuCategory> getMenuCategories(NumberGenerator numberGenerator) {
-        return Stream.generate(() -> numberGenerator.generateBetween(MIN_CATEGORY_NUMBER, MAX_CATEGORY_NUMBER))
-                .filter(categoryNumber -> categoryNumber >= MIN_CATEGORY_NUMBER
-                        && categoryNumber <= MAX_CATEGORY_NUMBER)
-                .limit(MAX_SIZE)
-                .map(MenuCategory::findCategoryByNumber)
-                .toList();
-    }
-
-    private static boolean isOverRecommended(List<MenuCategory> recommendedMenuCategory) {
-        for (MenuCategory menuCategory : MenuCategory.values()) {
-            int frequency = Collections.frequency(recommendedMenuCategory, menuCategory);
-            if (frequency > MAX_FREQUENCY) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static MenuCategory findCategoryByNumber(int categoryNumber) {
-        return Stream.of(MenuCategory.values())
-                .filter(menuCategory -> menuCategory.categoryNumber == categoryNumber)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 카테고리입니다."));
     }
 
     public String getName() {
