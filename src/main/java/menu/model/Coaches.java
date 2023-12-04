@@ -1,5 +1,6 @@
 package menu.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Coaches {
@@ -8,9 +9,9 @@ public class Coaches {
 
     private final List<Coach> coaches;
 
-    public Coaches(List<Coach> coaches) {
+    Coaches(List<Coach> coaches) {
         validate(coaches);
-        this.coaches = coaches;
+        this.coaches = new ArrayList<>(coaches);
     }
 
     private void validate(List<Coach> coaches) {
@@ -35,6 +36,6 @@ public class Coaches {
     }
 
     public List<Coach> getCoaches() {
-        return coaches;
+        return new ArrayList<>(coaches);
     }
 }

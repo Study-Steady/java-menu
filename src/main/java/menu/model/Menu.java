@@ -44,7 +44,7 @@ public enum Menu {
     RICE_NOODLES("쌀국수"),
     TOM_YUM_GOONG("똠얌꿍"),
     BANH_MI("반미"),
-    WOL_NAM_SAM("월남삼"),
+    WOL_NAM_SAM("월남쌈"),
     BUN_CHA("분짜"),
 
     // 양식

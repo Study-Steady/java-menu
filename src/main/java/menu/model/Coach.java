@@ -8,7 +8,7 @@ public class Coach {
     private final HateMenus hateMenus;
     private final RecommendMenus recommendMenus;
 
-    private Coach(CoachName name, HateMenus hateMenus, RecommendMenus recommendMenus) {
+    Coach(CoachName name, HateMenus hateMenus, RecommendMenus recommendMenus) {
         this.name = name;
         this.hateMenus = hateMenus;
         this.recommendMenus = recommendMenus;

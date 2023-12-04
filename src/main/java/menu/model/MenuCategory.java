@@ -22,8 +22,6 @@ public enum MenuCategory {
 
     private static final int MIN_CATEGORY_NUMBER = 1;
     private static final int MAX_CATEGORY_NUMBER = 5;
-    private static final int MAX_SIZE = 5;
-    private static final int MAX_FREQUENCY = 2;
 
     private final String name;
     private final int categoryNumber;

@@ -10,9 +10,9 @@ public class RecommendedMenuCategories {
 
     private final List<MenuCategory> menuCategories;
 
-    public RecommendedMenuCategories(List<MenuCategory> menuCategories) {
+    RecommendedMenuCategories(List<MenuCategory> menuCategories) {
         validate(menuCategories);
-        this.menuCategories = menuCategories;
+        this.menuCategories = new ArrayList<>(menuCategories);
     }
 
     private void validate(List<MenuCategory> menuCategories) {
@@ -38,7 +38,7 @@ public class RecommendedMenuCategories {
         List<MenuCategory> recommendedMenuCategories = new ArrayList<>();
         while (recommendedMenuCategories.size() < MAX_SIZE) {
             MenuCategory menuCategory = MenuCategory.findCategory(numberGenerator);
-            if (Collections.frequency(recommendedMenuCategories, menuCategory) <= MAX_FREQUENCY) {
+            if (Collections.frequency(recommendedMenuCategories, menuCategory) < MAX_FREQUENCY) {
                 recommendedMenuCategories.add(menuCategory);
             }
         }

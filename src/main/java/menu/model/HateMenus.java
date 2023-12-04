@@ -10,7 +10,7 @@ public class HateMenus {
 
     HateMenus(List<Menu> menus) {
         validate(menus);
-        this.menus = menus;
+        this.menus = new ArrayList<>(menus);
     }
 
     private void validate(List<Menu> menus) {
