@@ -21,28 +21,28 @@ public class MenuRecommendationController {
     }
 
     public void start() {
-        String inputCoachNames = participateCoach();
-
-        String[] splitedCoachNames = StringConvertor.splitByComma(inputCoachNames);
-        List<Coach> coachNames = new ArrayList<>();
-        for (int i = 0; i < splitedCoachNames.length; i++) {
-            outputView.printMenuMessageBy(splitedCoachNames[i]);
-            String inedibleMenus = inputHandler.receiveValidatedInedibleMenus();
-            coachNames.add(new Coach(splitedCoachNames[i], InedibleMenus.from(inedibleMenus)));
-            outputView.printNewLine();
-        }
-        Coaches coaches = new Coaches(coachNames);
+        Coaches coaches = participateCoaches();
+        updateInedibleMenus(coaches);
         Category category = setUpCategory();
         recommendMenusForEachCategory(coaches, category);
         showMenuRecommendationResults(coaches, category);
     }
 
-    private String participateCoach() {
+    private Coaches participateCoaches() {
         outputView.printStartMessage();
         outputView.printCoachNameInputMessage();
         String inputCoachNames = inputHandler.receiveValidatedCoachNames();
         outputView.printNewLine();
-        return inputCoachNames;
+        return Coaches.from(inputCoachNames);
+    }
+
+    private void updateInedibleMenus(Coaches coaches) {
+        for (int coach = 0; coach < coaches.getCoachCount(); coach++) {
+            outputView.printMenuMessageBy(coaches.getCoachNameBy(coach));
+            String inedibleMenus = inputHandler.receiveValidatedInedibleMenus();
+            coaches.updateInedibleMenusBy(coach, inedibleMenus);
+            outputView.printNewLine();
+        }
     }
 
     private void showMenuRecommendationResults(Coaches coaches, Category category) {
