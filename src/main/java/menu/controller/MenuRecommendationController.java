@@ -47,7 +47,7 @@ public class MenuRecommendationController {
     }
 
     private Category setUpCategory() {
-        return new Category(MenuRecommender.recommendCategories());
+        return MenuRecommender.recommendCategories();
     }
 
     private void recommendMenusForEachCategory(Coaches coaches, Category category) {
