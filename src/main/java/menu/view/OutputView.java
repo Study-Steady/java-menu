@@ -32,7 +32,7 @@ public class OutputView {
                     .append(String.join(" | ", recommendMenus))
                     .append(" ]\n");
         }
-        System.out.println(result);
+        System.out.print(result);
     }
 
     public void printEndMessage() {
