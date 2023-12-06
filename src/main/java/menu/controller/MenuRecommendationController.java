@@ -2,12 +2,12 @@ package menu.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import menu.domain.Category;
 import menu.domain.Coach;
 import menu.domain.Coaches;
 import menu.domain.InedibleMenus;
 import menu.domain.Menu;
-import menu.domain.MenuRecommander;
-import menu.domain.RecommandMenu;
+import menu.domain.MenuRecommender;
 import menu.util.StringConvertor;
 import menu.view.OutputView;
 import menu.view.handler.InputHandler;
@@ -22,10 +22,7 @@ public class MenuRecommendationController {
     }
 
     public void start() {
-        outputView.printStartMessage();
-        outputView.printCocheNameInputMessage();
-        String inputCoachNames = inputHandler.receiveValidatedCoachNames();
-        outputView.printNewLine();
+        String inputCoachNames = participateCoach();
 
         String[] splitedCoachNames = StringConvertor.splitByComma(inputCoachNames);
         List<Coach> coachNames = new ArrayList<>();
@@ -36,14 +33,35 @@ public class MenuRecommendationController {
             outputView.printNewLine();
         }
         Coaches coaches = new Coaches(coachNames);
+        Category category = setUpCategory();
+        recommendMenusForEachCategory(coaches, category);
+        showMenuRecommendationResults(coaches, category);
+    }
 
-        List<RecommandMenu> recommandMenus = new ArrayList<>();
-        List<Menu> categories = MenuRecommander.recommandCategories();
-        for (int i = 0; i < coaches.getCoachCount(); i++) {
-            recommandMenus.add(RecommandMenu.from(coaches.getCoachBy(i), categories));
-        }
-        outputView.printMenuRecommendationResults(coaches, categories, recommandMenus);
+    private String participateCoach() {
+        outputView.printStartMessage();
+        outputView.printCoachNameInputMessage();
+        String inputCoachNames = inputHandler.receiveValidatedCoachNames();
+        outputView.printNewLine();
+        return inputCoachNames;
+    }
+
+    private void showMenuRecommendationResults(Coaches coaches, Category category) {
+        outputView.printMenuRecommendationResults(coaches, category);
         outputView.printNewLine();
         outputView.printEndMessage();
+    }
+
+    private Category setUpCategory() {
+        return new Category(MenuRecommender.recommendCategories());
+    }
+
+    private void recommendMenusForEachCategory(Coaches coaches, Category category) {
+        for (int cat = 0; cat < category.getSize(); cat++) {
+            for (int coach = 0; coach < coaches.getCoachCount(); coach++) {
+                String menuName = MenuRecommender.recommendMenu(coaches.getCoachBy(coach), category.getCategoryBy(cat));
+                coaches.getCoachBy(coach).recommended(menuName);
+            }
+        }
     }
 }

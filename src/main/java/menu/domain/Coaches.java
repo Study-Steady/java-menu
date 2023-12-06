@@ -17,10 +17,11 @@ public class Coaches {
         return coaches.get(index);
     }
 
-    @Override
-    public String toString() {
-        return "Coaches{" +
-                "coaches=" + coaches +
-                '}';
+    public String getCoachNameBy(int index) {
+        return getCoachBy(index).getName();
+    }
+
+    public List<String> getRecommendMenusBy(int index) {
+        return getCoachBy(index).getRecommendMenus();
     }
 }

@@ -18,11 +18,4 @@ public class InedibleMenus {
     public boolean isInedibleMenu(String name) {
         return menus.contains(name);
     }
-
-    @Override
-    public String toString() {
-        return "InedibleMenus{" +
-                "menus=" + menus +
-                '}';
-    }
 }
