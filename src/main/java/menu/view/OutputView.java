@@ -1,10 +1,8 @@
 package menu.view;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import menu.domain.Category;
 import menu.domain.Coaches;
-import menu.domain.Menu;
 
 public class OutputView {
 

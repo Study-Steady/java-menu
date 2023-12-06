@@ -6,7 +6,6 @@ import menu.domain.Category;
 import menu.domain.Coach;
 import menu.domain.Coaches;
 import menu.domain.InedibleMenus;
-import menu.domain.Menu;
 import menu.domain.MenuRecommender;
 import menu.util.StringConvertor;
 import menu.view.OutputView;
