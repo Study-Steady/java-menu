@@ -37,6 +37,10 @@ public class Coaches {
         return getCoachBy(index).getRecommendMenus();
     }
 
+    public void recommendBy(int index, String menuName) {
+        getCoachBy(index).recommended(menuName);
+    }
+
     public void updateInedibleMenusBy(int index, String menuName) {
         getCoachBy(index).updateInedibleMenus(menuName);
     }

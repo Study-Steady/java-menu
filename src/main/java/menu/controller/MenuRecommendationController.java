@@ -1,13 +1,8 @@
 package menu.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import menu.domain.Category;
-import menu.domain.Coach;
 import menu.domain.Coaches;
-import menu.domain.InedibleMenus;
 import menu.domain.MenuRecommender;
-import menu.util.StringConvertor;
 import menu.view.OutputView;
 import menu.view.handler.InputHandler;
 
@@ -59,7 +54,7 @@ public class MenuRecommendationController {
         for (int cat = 0; cat < category.getSize(); cat++) {
             for (int coach = 0; coach < coaches.getCoachCount(); coach++) {
                 String menuName = MenuRecommender.recommendMenu(coaches.getCoachBy(coach), category.getCategoryBy(cat));
-                coaches.getCoachBy(coach).recommended(menuName);
+                coaches.recommendBy(coach, menuName);
             }
         }
     }

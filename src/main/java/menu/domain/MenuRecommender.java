@@ -14,7 +14,7 @@ public class MenuRecommender {
 
     public static String recommendMenu(Coach coach, Menu menu) {
         String menuName = Randoms.shuffle(menu.getNames()).get(0);
-        while (coach.isInedibleMenu(menuName)) {
+        while (coach.isInedibleMenu(menuName) && !coach.alreadyRecommended(menuName)) {
             menuName = Randoms.shuffle(menu.getNames()).get(0);
         }
         return menuName;

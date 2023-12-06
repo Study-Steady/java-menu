@@ -27,6 +27,10 @@ public class Coach {
         return inedibleMenus.isInedibleMenu(menuName);
     }
 
+    public boolean alreadyRecommended(String menuName) {
+        return recommendMenus.contains(menuName);
+    }
+
     public void recommended(String menuName) {
         recommendMenus.add(menuName);
     }
